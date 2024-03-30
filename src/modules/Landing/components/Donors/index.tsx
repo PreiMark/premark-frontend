@@ -1,34 +1,36 @@
 import * as React from "react";
-import { Button } from "@mui/material";
 import styled from "styled-components";
-import { LINK_VIDEO_PRODUCTION } from "@/constant";
-export interface ITradeALotOfAssetProps { }
+import { LINK_VIDEO_DONORS } from "@/constant";
+export interface IDonorsProps { }
+import donors from "@/assets/images/donors.png";
+import Image from "next/image";
 
-export default function TradeALotOfAsset(props: ITradeALotOfAssetProps) {
+export default function Donors(props: IDonorsProps) {
   return (
     <Container>
-      <video style={{ borderRadius: "16px" }} width={500} height={552} src={LINK_VIDEO_PRODUCTION} muted autoPlay loop />
       <ContentRight>
         <PreMark>premark</PreMark>
-        <Title>Trade ALot Of Asset</Title>
-        <Description>
-          Pre-listing allocation, NFT whitelist, rewardings point,...
-        </Description>
-        <ButtonJoin variant="contained">Join Waitlist</ButtonJoin>
+        <Title>Collaborate, Innovate</Title>
+        <Title>Succeed: Bringing Ideas to Life</Title>
       </ContentRight>
+      <Image src={donors.src} width={1118} height={210} alt="donors_premark" />
+      <video style={{ borderRadius: "16px" }} width={491} height={532} src={LINK_VIDEO_DONORS} muted autoPlay loop />
     </Container>
   )
 }
 
 const Container = styled.div`
   display: flex;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
   gap: 100px;
   margin-top: 40px;
-
 `
 const ContentRight = styled.div`
   display: flex;
+  justify-content: center;
+  align-items: center;
   flex-direction: column;
   gap: 16px;
 `
@@ -52,18 +54,3 @@ const Title = styled.div`
   line-height: 54px;
   color: #FFF;
 `
-const Description = styled.div`
-  color: rgba(156, 163, 175, 1);
-`
-const ButtonJoin = styled(Button)`
-  width: 181px;
-  height: 56px;
-  border-radius: 12px;
-  background: linear-gradient(95.2deg, #FFB8FC -4.81%, #E1BAFF 42.66%, #9339DA 100%);
-  padding: 16px 32px;
-  color: #000;
-  font-weight: 600;
-  &:hover {
-    background-color: #e3e3e3;
-  }
-`;
