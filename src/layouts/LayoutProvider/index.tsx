@@ -3,6 +3,7 @@ import Header from "@/components/Header";
 import * as React from "react";
 import styled from "styled-components";
 import imageBg from "@/assets/images/Premark.png";
+import Footer from "@/components/Footer";
 
 export interface ILayoutProviderProps {
   children: React.ReactNode;
@@ -14,6 +15,7 @@ export default function LayoutProvider({ children }: ILayoutProviderProps) {
       <Container>
         <Header />
         {children}
+        <Footer />
       </Container>
     </LayoutWrapper>
   );
@@ -21,7 +23,8 @@ export default function LayoutProvider({ children }: ILayoutProviderProps) {
 
 const LayoutWrapper = styled.div`
   background-image: url(${imageBg.src});
-  min-height: 10000000px;
+  background-repeat: no-repeat;
+  min-height: 100vh;
 `;
 const Container = styled.div`
   max-width: 1400px;

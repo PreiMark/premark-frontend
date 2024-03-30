@@ -1,1 +1,5 @@
 export {default as Logo} from "./Logo"
+export {default as IconDiscord} from "./IconDiscord"
+export {default as IconTelegram} from "./IconTelegram"
+export {default as IconTwiter} from "./IconTwiter"
+export {default as IconWeb} from "./IconWeb"

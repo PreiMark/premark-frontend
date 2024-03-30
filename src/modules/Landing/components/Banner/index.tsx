@@ -20,11 +20,13 @@ export default function Banner(props: IBannerProps) {
 }
 
 const ButtonJoin = styled(Button)`
-  width: 181px;
-  height: 56px;
+  width: 150px;
+  height: 45px;
   border-radius: 12px;
   background-color: #ffff;
   color: #000;
+  padding: 12px;
+  text-transform: capitalize;
   &:hover {
     background-color: #e3e3e3;
   }

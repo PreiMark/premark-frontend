@@ -22,9 +22,7 @@ export default function Header(props: IHeaderProps) {
           <Stack direction={"row"} sx={{ alignItems: "center" }} spacing={5}>
             {LIST_MENU.map((item, index) => (
               <Link href={item.url}>
-                <MenuItem key={index} active={index === 0}>
-                  {item.title}
-                </MenuItem>
+                <MenuItem key={index}>{item.title}</MenuItem>
               </Link>
             ))}
           </Stack>
@@ -58,6 +56,7 @@ const ButtonJoin = styled(Button)`
   border-radius: 8px;
   border: none;
   text-transform: capitalize;
+  height: 45px;
   &:hover {
     opacity: 0.5;
     background-color: #9945ff !important;
