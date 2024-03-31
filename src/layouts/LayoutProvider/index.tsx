@@ -24,6 +24,7 @@ export default function LayoutProvider({ children }: ILayoutProviderProps) {
 const LayoutWrapper = styled.div`
   background-image: url(${imageBg.src});
   background-repeat: no-repeat;
+  background-size: cover;
   min-height: 100vh;
 `;
 const Container = styled.div`
