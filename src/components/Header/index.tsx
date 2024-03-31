@@ -21,7 +21,7 @@ export default function Header(props: IHeaderProps) {
           <Logo />
           <Stack direction={"row"} sx={{ alignItems: "center" }} spacing={5}>
             {LIST_MENU.map((item, index) => (
-              <Link href={item.url}>
+              <Link href={item.url} key={index}>
                 <MenuItem key={index}>{item.title}</MenuItem>
               </Link>
             ))}
