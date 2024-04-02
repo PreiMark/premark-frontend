@@ -25,15 +25,6 @@ export default function Header(props: IHeaderProps) {
 		},
 	});
 
-	console.log({
-		buttonState: buttonState,
-		onConnect: onConnect,
-		onDisconnect: onDisconnect,
-		publicKey: publicKey,
-		walletIcon: walletIcon,
-		walletName: walletName,
-	});
-	
 	return (
 		<Sectionheader>
 			<StackCustom direction={'row'}>
@@ -66,14 +57,30 @@ export default function Header(props: IHeaderProps) {
 }
 
 const Sectionheader = styled.div`
-	display: flex;
-	justify-content: space-between;
-	padding: 24px;
+  display: flex;
+  justify-content: space-between;
+  padding: 24px;
+  @media (max-width: 768px) {
+    padding: 0;
+  }
 `;
 const StackCustom = styled(Stack)`
-	justify-content: space-between;
-	align-items: center;
-	width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  @media (max-width: 1024px) {
+    gap: 26px;
+    flex-wrap: wrap;
+  }
+`;
+
+const MenuCustom = styled(Stack)`
+  flex-direction: row;
+  gap: 26px;
+  @media (max-width: 1024px) {
+    gap: 26px;
+    flex-wrap: wrap;
+  }
 `;
 
 const MenuItem = styled(Button)<any>`

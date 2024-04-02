@@ -38,7 +38,7 @@ export default function Footer(props: IFooterProps) {
             <IconTelegram />
           </Stack>
         </Stack>
-        <Stack direction={"row"} spacing={8}>
+        <Stack direction={"row"} spacing={3}>
           {FOOTER.map((item) => (
             <Stack key={item.menu} spacing={2}>
               <h2 className="menu">{item.menu}</h2>
@@ -83,6 +83,12 @@ const SectionFooter = styled.section`
     font-weight: 500;
     color: #9ca3af;
     cursor: pointer;
+  }
+
+  @media (max-width: 768px) {
+    justify-content: center;
+    flex-direction: column;
+    gap: 26px;
   }
 `;
 
