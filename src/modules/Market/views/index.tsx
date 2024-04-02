@@ -1,131 +1,63 @@
 'use client';
 
-import { Box, Button, Radio, Typography } from '@mui/material';
-import { ChangeEvent, useState } from 'react';
+import { Box, Button } from '@mui/material';
 import styled from 'styled-components';
+import NetworkAndTypeStep from '../components/NetworkAndTypeStep';
+import { useCallback, useMemo, useState } from 'react';
+import DetailSettingsStep from '../components/DetailSettingsStep';
+import ReviewAndCreateStep from '../components/ReviewAndCreateStep';
 
 export interface IMarketPage {}
 
 export default function MarketPage(props: IMarketPage) {
-	const [value, setValue] = useState<string>('buy');
+	const [crrStep, setCrrStep] = useState<number>(0);
 
-	const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-		setValue((event.target as HTMLInputElement).value);
-	};
+	const handleNextStep = useCallback(() => {
+		setCrrStep((prevStep) => prevStep + 1);
+	}, []);
+
+	const handlePrevStep = useCallback(() => {
+		setCrrStep((prevStep) => prevStep - 1);
+	}, []);
+
+	const renderCrrStep = useMemo(() => {
+		switch (crrStep) {
+			case 0:
+				return <NetworkAndTypeStep />;
+			case 1:
+				return <DetailSettingsStep />;
+			case 2:
+				return <ReviewAndCreateStep />;
+			default:
+				break;
+		}
+	}, [crrStep]);
 
 	return (
 		<GradientBox>
-			<Box>
-				<Box
-					display={'flex'}
-					flexDirection={'column'}
-					gap={'1.5rem'}
+			{renderCrrStep}
+			<Box
+				display={'flex'}
+				gap={'1.5rem'}
+			>
+				<Button
+					color='info'
+					variant='outlined'
+					fullWidth
+					disabled={crrStep === 0}
+					onClick={handlePrevStep}
 				>
-					<Box
-						display={'flex'}
-						flexDirection={'column'}
-						gap={'1rem'}
-					>
-						<Typography
-							fontSize={'1rem'}
-							fontWeight={600}
-							lineHeight={'1.5rem'}
-						>
-							Network
-						</Typography>
-						<Box
-							px={'0.75rem'}
-							py={'1rem'}
-							borderRadius={'0.5rem'}
-							border={'1px solid #6E727D'}
-						>
-							<Typography
-								fontSize={'0.875rem'}
-								fontWeight={600}
-								lineHeight={'1.25rem'}
-							>
-								0.0338
-							</Typography>
-						</Box>
-					</Box>
-					<Box
-						display={'flex'}
-						gap={'0.75rem'}
-					>
-						<Box
-							display={'flex'}
-							alignItems={'flex-start'}
-						>
-							<Radio
-								checked={value === 'buy'}
-								onChange={handleChange}
-								value='buy'
-								name='action'
-							/>
-						</Box>
-						<Box
-							display={'flex'}
-							flexDirection={'column'}
-							gap={'0.25rem'}
-						>
-							<Typography>Buying</Typography>
-							<Typography
-								fontSize={'0.875rem'}
-								color={'#6E727D'}
-							>
-								You want to buy points
-							</Typography>
-						</Box>
-					</Box>
-					<Box
-						display={'flex'}
-						gap={'0.75rem'}
-					>
-						<Box
-							display={'flex'}
-							alignItems={'flex-start'}
-						>
-							<Radio
-								checked={value === 'sell'}
-								onChange={handleChange}
-								value='sell'
-								name='action'
-							/>
-						</Box>
-						<Box
-							display={'flex'}
-							flexDirection={'column'}
-							gap={'0.25rem'}
-						>
-							<Typography>Selling</Typography>
-							<Typography
-								fontSize={'0.875rem'}
-								color={'#6E727D'}
-							>
-								You want to sell your points
-							</Typography>
-						</Box>
-					</Box>
-				</Box>
-				<Box
-					display={'flex'}
-					gap={'1.5rem'}
+					Back
+				</Button>
+				<Button
+					color='primary'
+					variant='contained'
+					disabled={crrStep === 2}
+					fullWidth
+					onClick={handleNextStep}
 				>
-					<Button
-						color='secondary'
-						variant='outlined'
-						fullWidth
-					>
-						Back
-					</Button>
-					<Button
-						color='primary'
-						variant='contained'
-						fullWidth
-					>
-						Next
-					</Button>
-				</Box>
+					Next
+				</Button>
 			</Box>
 		</GradientBox>
 	);
