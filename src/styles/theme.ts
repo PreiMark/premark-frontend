@@ -10,13 +10,17 @@ const theme = createTheme({
 		fontFamily: inter.style.fontFamily,
 	},
 	palette: {
+		common: {
+			black: '#000',
+			white: '#FFF',
+		},
 		primary: {
 			main: '#9945FF',
 			contrastText: '#FFF',
 		},
 		secondary: {
 			main: '#08E5B2',
-			contrastText: '#000000',
+			contrastText: '#000',
 		},
 		info: {
 			main: '#6E727D',
@@ -27,6 +31,9 @@ const theme = createTheme({
 			disabled: '#6E727D',
 		},
 	},
+	// shape: {
+	// 	borderRadius: '0.5rem',
+	// },
 	components: {
 		MuiButton: {
 			styleOverrides: {
@@ -35,6 +42,7 @@ const theme = createTheme({
 				},
 				outlined: {
 					borderRadius: '0.5rem',
+					borderColor: 'red',
 				},
 			},
 		},

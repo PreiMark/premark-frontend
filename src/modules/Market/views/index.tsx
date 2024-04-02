@@ -41,10 +41,10 @@ export default function MarketPage(props: IMarketPage) {
 				gap={'1.5rem'}
 			>
 				<Button
-					color='info'
+					color='secondary'
 					variant='outlined'
 					fullWidth
-					disabled={crrStep === 0}
+					disabled
 					onClick={handlePrevStep}
 				>
 					Back
