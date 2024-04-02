@@ -105,3 +105,7 @@ a {
     color-scheme: dark;
   }
 }
+
+video, img {
+  mix-blend-mode: screen;
+}
