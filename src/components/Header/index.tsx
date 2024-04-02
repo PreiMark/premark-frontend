@@ -17,7 +17,7 @@ export default function Header(props: IHeaderProps) {
   return (
     <Sectionheader>
       <StackCustom direction={"row"}>
-        <Stack direction={"row"} spacing={10}>
+        <MenuCustom>
           <Logo />
           <Stack direction={"row"} sx={{ alignItems: "center" }} spacing={5}>
             {LIST_MENU.map((item, index) => (
@@ -26,7 +26,7 @@ export default function Header(props: IHeaderProps) {
               </Link>
             ))}
           </Stack>
-        </Stack>
+        </MenuCustom>
         <ButtonJoin>Join waitlist</ButtonJoin>
       </StackCustom>
     </Sectionheader>
@@ -37,11 +37,27 @@ const Sectionheader = styled.div`
   display: flex;
   justify-content: space-between;
   padding: 24px;
+  @media (max-width: 768px) {
+    padding: 0;
+  }
 `;
 const StackCustom = styled(Stack)`
   justify-content: space-between;
   align-items: center;
   width: 100%;
+  @media (max-width: 1024px) {
+    gap: 26px;
+    flex-wrap: wrap;
+  }
+`;
+
+const MenuCustom = styled(Stack)`
+  flex-direction: row;
+  gap: 26px;
+  @media (max-width: 1024px) {
+    gap: 26px;
+    flex-wrap: wrap;
+  }
 `;
 
 const MenuItem = styled(Button)<any>`

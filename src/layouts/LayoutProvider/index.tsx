@@ -25,6 +25,7 @@ const LayoutWrapper = styled.div`
   background-image: url(${imageBg.src});
   background-repeat: no-repeat;
   background-size: cover;
+  image-rendering: pixelated;
   min-height: 100vh;
 `;
 const Container = styled.div`
