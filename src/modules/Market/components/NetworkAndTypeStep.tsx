@@ -1,3 +1,4 @@
+import IconSolana from '@/assets/icons/IconSolana';
 import { Box, Radio, Typography } from '@mui/material';
 import { ChangeEvent, useState } from 'react';
 
@@ -29,9 +30,13 @@ export default function NetworkAndTypeStep() {
 				<Box
 					px={'0.75rem'}
 					py={'1rem'}
+					display={'flex'}
+					alignItems={'center'}
 					borderRadius={'0.5rem'}
+					gap={'0.75rem'}
 					border={'1px solid #6E727D'}
 				>
+					<IconSolana />
 					<Typography
 						fontSize={'0.875rem'}
 						fontWeight={600}

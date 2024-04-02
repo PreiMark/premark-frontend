@@ -6,11 +6,18 @@ import NetworkAndTypeStep from '../components/NetworkAndTypeStep';
 import { useCallback, useMemo, useState } from 'react';
 import DetailSettingsStep from '../components/DetailSettingsStep';
 import ReviewAndCreateStep from '../components/ReviewAndCreateStep';
+import OrderStepper from '../components/OrderStepper';
+import { useProvider } from '@/hooks/useProvider';
 
 export interface IMarketPage {}
 
 export default function MarketPage(props: IMarketPage) {
 	const [crrStep, setCrrStep] = useState<number>(0);
+	// const { open, setOpen } = useWalletDialog();
+
+	const provider = useProvider();
+
+	console.log('provider:', provider);
 
 	const handleNextStep = useCallback(() => {
 		setCrrStep((prevStep) => prevStep + 1);
@@ -35,29 +42,32 @@ export default function MarketPage(props: IMarketPage) {
 
 	return (
 		<GradientBox>
+			<OrderStepper activeStep={crrStep} />
 			{renderCrrStep}
 			<Box
 				display={'flex'}
 				gap={'1.5rem'}
 			>
-				<Button
-					color='secondary'
-					variant='outlined'
-					fullWidth
-					disabled
-					onClick={handlePrevStep}
-				>
-					Back
-				</Button>
-				<Button
-					color='primary'
-					variant='contained'
-					disabled={crrStep === 2}
-					fullWidth
-					onClick={handleNextStep}
-				>
-					Next
-				</Button>
+				{crrStep !== 0 && (
+					<Button
+						color='info'
+						variant='outlined'
+						fullWidth
+						onClick={handlePrevStep}
+					>
+						Back
+					</Button>
+				)}
+				{crrStep !== 2 && (
+					<Button
+						color='primary'
+						variant='contained'
+						fullWidth
+						onClick={handleNextStep}
+					>
+						Next
+					</Button>
+				)}
 			</Box>
 		</GradientBox>
 	);

@@ -31,21 +31,7 @@ const theme = createTheme({
 			disabled: '#6E727D',
 		},
 	},
-	// shape: {
-	// 	borderRadius: '0.5rem',
-	// },
 	components: {
-		MuiButton: {
-			styleOverrides: {
-				contained: {
-					borderRadius: '0.5rem',
-				},
-				outlined: {
-					borderRadius: '0.5rem',
-					borderColor: 'red',
-				},
-			},
-		},
 		MuiRadio: {
 			styleOverrides: {
 				root: {
@@ -55,6 +41,38 @@ const theme = createTheme({
 				},
 			},
 		},
+
+		MuiStepIcon: {
+			styleOverrides: {
+				root: {
+					'&.Mui-completed': {
+						color: '#9945FF',
+						border: 'none',
+					},
+					'&.Mui-active': {
+						color: '#08E5B2',
+						border: 'none',
+					},
+					fontSize: '0.875rem',
+					fontWeight: '600',
+					width: '40px',
+					height: '40px',
+					color: 'transparent',
+					border: '1px solid #FFF',
+					borderRadius: '100%',
+				},
+			},
+		},
+		MuiStepLabel: {
+			styleOverrides: {
+				label: {
+					color: '#FFF',
+				},
+			},
+		},
+	},
+	shape: {
+		borderRadius: 8,
 	},
 });
 
