@@ -10,16 +10,16 @@ export default function IconArrowUpRight() {
 			<path
 				d='M7 17.5L17 7.5'
 				stroke='#08E5B2'
-				stroke-width='2'
-				stroke-linecap='round'
-				stroke-linejoin='round'
+				strokeWidth='2'
+				strokeLinecap='round'
+				strokeLinejoin='round'
 			/>
 			<path
 				d='M7 7.5H17V17.5'
 				stroke='#08E5B2'
-				stroke-width='2'
-				stroke-linecap='round'
-				stroke-linejoin='round'
+				strokeWidth='2'
+				strokeLinecap='round'
+				strokeLinejoin='round'
 			/>
 		</svg>
 	);
