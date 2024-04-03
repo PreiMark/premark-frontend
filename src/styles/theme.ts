@@ -70,6 +70,14 @@ const theme = createTheme({
 				},
 			},
 		},
+		MuiPaper: {
+			styleOverrides: {
+				rounded: {
+					borderRadius: '1rem',
+					backgroundColor: 'rgba(23, 29, 41, 0.50)',
+				},
+			},
+		},
 	},
 	shape: {
 		borderRadius: 8,

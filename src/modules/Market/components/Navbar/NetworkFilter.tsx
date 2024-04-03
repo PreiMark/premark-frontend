@@ -37,14 +37,19 @@ export default function NetworkFilter() {
 						network.network === crrNetwork ? 'secondary' : 'info'
 					}
 					onClick={() => selectNetwork(network.network)}
-					sx={{ px: '1rem', py: '0.75rem', color: 'white' }}
+					sx={{
+						px: '16px',
+						py: '12px',
+						color: 'white',
+						whiteSpace: 'nowrap',
+					}}
 					endIcon={
 						<Typography
-							fontSize={8}
 							px={'6px'}
 							bgcolor={'#483062'}
 							borderRadius={'4px'}
 							color={'white'}
+							sx={{ fontSize: '12px' }}
 						>
 							{network.amount}
 						</Typography>

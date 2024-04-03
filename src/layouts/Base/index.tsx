@@ -9,7 +9,7 @@ export interface ILayoutProviderProps {
   children: React.ReactNode;
 }
 
-export default function LayoutProvider({ children }: ILayoutProviderProps) {
+export default function BaseLayout({ children }: ILayoutProviderProps) {
   return (
     <LayoutWrapper>
       <Container>

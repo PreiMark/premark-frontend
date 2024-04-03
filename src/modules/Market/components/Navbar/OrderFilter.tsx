@@ -37,7 +37,7 @@ export default function OrderFilter() {
 					key={key}
 					color={label === crrOrder ? 'secondary' : 'info'}
 					onClick={() => selectOrder(label)}
-					sx={{ px: '24px', py: '16px' }}
+					sx={{ px: '24px', py: '16px', whiteSpace: 'nowrap' }}
 				>
 					{renderOrderLabel(label)}
 				</Button>
