@@ -12,11 +12,9 @@ export interface ILayoutProviderProps {
 export default function MarketLayout({ children }: ILayoutProviderProps) {
 	return (
 		<LayoutWrapper>
-			<Container>
-				<Header />
-				{children}
-				<Footer />
-			</Container>
+			<Header />
+			<Container>{children}</Container>
+			<Footer />
 		</LayoutWrapper>
 	);
 }
