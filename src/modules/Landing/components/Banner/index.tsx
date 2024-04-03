@@ -1,8 +1,9 @@
-import { Button, Stack } from '@mui/material';
-import Image from 'next/image';
-import * as React from 'react';
-import styled from 'styled-components';
-import hero from '@/assets/images/hero.png';
+import { Button, Stack } from "@mui/material";
+import Image from "next/image";
+import * as React from "react";
+import styled from "styled-components";
+import Wormhole from "@/assets/images/wormhole.svg";
+import Solona from "@/assets/images/solana.svg";
 
 export interface IBannerProps {}
 
@@ -11,7 +12,11 @@ export default function Banner(props: IBannerProps) {
     <StackBanner direction={"row"}>
       <CrossChain>
         <h1>Cross-chain pre market for points </h1>
-        <p>Built on Wormwhole & Solana</p>
+        <p>
+          Built on:
+          <Image src={Wormhole} alt="Wormhole" />
+          <Image src={Solona} alt="Solona" />
+        </p>
         <ButtonJoin variant="contained">Join Waitlist</ButtonJoin>
       </CrossChain>
       {/* <Image src={hero.src} width={559} height={507} alt="hero_premark" /> */}
@@ -20,16 +25,16 @@ export default function Banner(props: IBannerProps) {
 }
 
 const ButtonJoin = styled(Button)`
-	width: 150px;
-	height: 45px;
-	border-radius: 12px;
-	background-color: #ffff;
-	color: #000;
-	padding: 12px;
-	text-transform: capitalize;
-	&:hover {
-		background-color: #e3e3e3;
-	}
+  width: 150px;
+  height: 45px;
+  border-radius: 12px;
+  background-color: #ffff;
+  color: #000;
+  padding: 12px;
+  text-transform: capitalize;
+  &:hover {
+    background-color: #e3e3e3;
+  }
 `;
 
 const StackBanner = styled(Stack)`
@@ -54,10 +59,18 @@ const CrossChain = styled.div`
     font-size: 3.35vw;
     font-weight: 700;
     letter-spacing: -0.8px;
-    color: #ffff;
+    color: #fff;
+    background: linear-gradient(89.97deg, #f4e7ff 1.84%, #be8ae8 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
   }
   p {
     color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 5px;
   }
   @media (max-width: 1024px) {
     h1 {
