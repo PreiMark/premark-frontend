@@ -18,7 +18,7 @@ export default function TradeALotOfAsset(props: ITradeALotOfAssetProps) {
       />
       <ContentRight>
         <PreMark>premark</PreMark>
-        <Title>Trade ALot Of Asset</Title>
+        <Title>Multiple Assets, One Space</Title>
         <Description>
           Pre-listing allocation, NFT whitelist, rewardings point,...
         </Description>

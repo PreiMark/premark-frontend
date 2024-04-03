@@ -1,24 +1,36 @@
 "use client";
 import Logo from "@/assets/icons/Logo";
-import { Button, Stack } from "@mui/material";
 import * as React from "react";
 import styled from "styled-components";
 import Link from "next/link";
+import { Button, Stack } from "@mui/material";
+import { IconList } from "@/assets/icons";
+import SidebarMobile from "../SidebarMobile";
 
 export interface IHeaderProps {}
 
 export default function Header(props: IHeaderProps) {
+  const [ShowSidebar, setShowSidebar] = React.useState<boolean>(false);
+
   const LIST_MENU = [
     { title: "About", url: "/" },
     { title: "Feature", url: "/" },
     { title: "Roadmap", url: "/" },
   ];
+  const handleShowSidebar = () => {
+    setShowSidebar(!ShowSidebar);
+  };
+  const handleCloseSidebar = () => {
+    setShowSidebar(!ShowSidebar);
+  };
 
   return (
     <Sectionheader>
       <StackCustom direction={"row"}>
         <MenuCustom>
-          <Logo />
+          <Link href="/">
+            <Logo />
+          </Link>
           <Stack direction={"row"} sx={{ alignItems: "center" }} spacing={5}>
             {LIST_MENU.map((item, index) => (
               <Link href={item.url} key={index}>
@@ -27,7 +39,15 @@ export default function Header(props: IHeaderProps) {
             ))}
           </Stack>
         </MenuCustom>
+        <ListButton onClick={handleShowSidebar}>
+          <IconList />
+        </ListButton>
         <ButtonJoin>Join waitlist</ButtonJoin>
+
+        <SidebarMobile
+          handleClose={handleCloseSidebar}
+          ShowSidebar={ShowSidebar}
+        />
       </StackCustom>
     </Sectionheader>
   );
@@ -58,6 +78,9 @@ const MenuCustom = styled(Stack)`
     gap: 26px;
     flex-wrap: wrap;
   }
+  @media (max-width: 768px) {
+    display: none;
+  }
 `;
 
 const MenuItem = styled(Button)<any>`
@@ -76,5 +99,11 @@ const ButtonJoin = styled(Button)`
   &:hover {
     opacity: 0.5;
     background-color: #9945ff !important;
+  }
+`;
+
+const ListButton = styled(Button)`
+  @media (min-width: 768px) {
+    display: none;
   }
 `;
