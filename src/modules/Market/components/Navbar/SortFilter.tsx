@@ -33,28 +33,43 @@ export default function SortFilter() {
 					id='sort-filter'
 					value={filterType}
 					onChange={handleChange}
-					sx={{ border: '1px solid #6E727D', borderRadius: '0.5rem' }}
+					sx={{
+						border: '1px solid #6E727D',
+						borderRadius: '0.5rem',
+						height: 'min-content',
+						fontSize: '14px',
+						lineHeight: '20px',
+					}}
 				>
 					{filterTypeList.map((filter: string, key: Key) => (
 						<MenuItem
 							value={filter}
 							key={key}
+							sx={{
+								height: 'min-content',
+								fontSize: '14px',
+								lineHeight: '20px',
+							}}
 						>
 							{filter}
 						</MenuItem>
 					))}
 				</Select>
 			</Box>
-			<IconButton
-				color='info'
-				sx={{
-					border: '1px solid #6E727D',
-					borderRadius: '0.5rem',
-					padding: '0.5rem',
-				}}
+			<Box
+				border={'1px solid #6E727D'}
+				borderRadius={'8px'}
+				padding={'8px'}
+				display={'flex'}
+				alignItems={'center'}
+				justifyContent={'center'}
+				width={'56px'}
+				height={'56px'}
+				bgcolor={'transparent'}
+				sx={{ cursor: 'pointer' }}
 			>
 				<IconResetFilter />
-			</IconButton>
+			</Box>
 		</Box>
 	);
 }

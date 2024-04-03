@@ -1,5 +1,6 @@
 import IconETH from '@/assets/icons/IconETH';
-import { Box, Button, Paper, Stack, Typography } from '@mui/material';
+import CircularProgressWithLabel from '@/components/common/CircularProgressWithLabel';
+import { Box, Button, Divider, Paper, Stack, Typography } from '@mui/material';
 import Image from 'next/image';
 
 export default function OrderCard() {
@@ -14,14 +15,15 @@ export default function OrderCard() {
 				spacing={'40px'}
 			>
 				{/* Header */}
-				<Box>
+				<Box
+					display={'flex'}
+					alignItems={'center'}
+					justifyContent={'space-between'}
+				>
 					<Box
-						paddingX={'32px'}
-						paddingY={'36px'}
 						display={'flex'}
 						gap={'19px'}
 						width={'100%'}
-						justifyContent={'space-between'}
 						alignItems={'center'}
 					>
 						<Image
@@ -33,7 +35,7 @@ export default function OrderCard() {
 						<Box
 							display={'flex'}
 							flexDirection={'column'}
-							gap={'20px'}
+							justifyContent={'space-between'}
 						>
 							<Box
 								display={'flex'}
@@ -56,20 +58,31 @@ export default function OrderCard() {
 								</Typography>
 							</Box>
 							<Box
-								paddingX={'16px'}
-								paddingY={'8px'}
+								paddingX={'12px'}
+								paddingY={'4px'}
 								borderRadius={'8px'}
-								boxSizing={'border-box'}
 								display={'flex'}
 								gap={'8px'}
 								alignItems={'center'}
 								bgcolor={'rgba(151, 71, 255, 0.20)'}
 								color={'#9945FF'}
+								width={'max-content'}
 							>
 								Partial Fill
 							</Box>
 						</Box>
 					</Box>
+					<CircularProgressWithLabel
+						value={8}
+						color='secondary'
+						size={100}
+						thickness={13}
+						sx={{
+							borderRadius: '100%',
+							boxShadow:
+								'inset 0 0 0 30px rgba(255, 255, 255, 0.20)',
+						}}
+					/>
 				</Box>
 
 				{/* Body */}
@@ -103,7 +116,7 @@ export default function OrderCard() {
 						<Box
 							display={'flex'}
 							gap={'1rem'}
-							paddingY={'0.5rem'}
+							alignItems={'center'}
 						>
 							<Typography
 								fontSize={'1.5rem'}
@@ -111,7 +124,13 @@ export default function OrderCard() {
 							>
 								1.00M pts
 							</Typography>
-							<Box borderRadius={'100%'}>
+							<Box
+								borderRadius={'100%'}
+								overflow={'hidden'}
+								display={'flex'}
+								alignItems={'center'}
+								justifyContent={'center'}
+							>
 								<Image
 									src={'/DEFAULT_IMAGE.png'}
 									alt=''
@@ -166,6 +185,15 @@ export default function OrderCard() {
 					</Box>
 				</Box>
 
+				<Divider
+					orientation='horizontal'
+					flexItem
+					sx={{
+						backgroundColor: '#6E727D',
+						margin: 0,
+						padding: 0,
+					}}
+				/>
 				{/* Footer */}
 				<Box
 					display={'flex'}

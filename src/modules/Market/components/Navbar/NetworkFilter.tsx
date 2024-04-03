@@ -42,6 +42,7 @@ export default function NetworkFilter() {
 						py: '12px',
 						color: 'white',
 						whiteSpace: 'nowrap',
+						height: 'min-content',
 					}}
 					endIcon={
 						<Typography
@@ -49,7 +50,8 @@ export default function NetworkFilter() {
 							bgcolor={'#483062'}
 							borderRadius={'4px'}
 							color={'white'}
-							sx={{ fontSize: '12px' }}
+							fontSize={'12px'}
+							lineHeight={'24px'}
 						>
 							{network.amount}
 						</Typography>

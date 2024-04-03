@@ -29,37 +29,51 @@ export default function Banner() {
 					<Divider
 						orientation='vertical'
 						flexItem
-						sx={{ backgroundColor: '#6E727D' }}
+						sx={{
+							backgroundColor: '#6E727D',
+							margin: 0,
+							padding: 0,
+						}}
 					/>
 				}
 				spacing={2}
 				width={'100%'}
 				useFlexGap
 			>
+				{/* First Col */}
 				<Box
 					paddingX={'32px'}
 					paddingY={'36px'}
 					display={'flex'}
 					gap={'19px'}
 					width={'100%'}
-					justifyContent={'space-between'}
 					alignItems={'center'}
 				>
-					<Image
-						src={'/DEFAULT_IMAGE.png'}
-						alt=''
-						width={80}
-						height={80}
-					/>
+					<Box
+						borderRadius={'100%'}
+						overflow={'hidden'}
+						display={'flex'}
+						alignItems={'center'}
+						justifyItems={'center'}
+					>
+						<Image
+							src={'/DEFAULT_IMAGE.png'}
+							alt=''
+							width={80}
+							height={80}
+						/>
+					</Box>
 					<Box
 						display={'flex'}
 						flexDirection={'column'}
+						justifyContent={'space-between'}
 						gap={'17px'}
 					>
 						<Typography
 							component={'h3'}
 							fontSize={'24px'}
 							fontWeight={600}
+							lineHeight={'24px'}
 						>
 							Azuro
 						</Typography>
@@ -71,13 +85,17 @@ export default function Banner() {
 							display={'flex'}
 							gap={'8px'}
 							alignItems={'center'}
-							sx={{ backgroundColor: 'rgba(8, 229, 178, 0.20)' }}
+							bgcolor={'rgba(8, 229, 178, 0.20)'}
 						>
 							<IconTwiter />
 							<Divider
 								orientation='vertical'
 								flexItem
-								sx={{ backgroundColor: '#08E5B2' }}
+								sx={{
+									backgroundColor: '#08E5B2',
+									margin: 0,
+									padding: 0,
+								}}
 							/>
 							<Typography
 								component={'a'}
@@ -92,6 +110,8 @@ export default function Banner() {
 						</Box>
 					</Box>
 				</Box>
+
+				{/* Second Col */}
 				<Box
 					paddingX={'32px'}
 					paddingY={'36px'}
@@ -99,6 +119,7 @@ export default function Banner() {
 					flexDirection={'column'}
 					gap={'12px'}
 					width={'100%'}
+					justifyContent={'center'}
 				>
 					{secondColumnInfoList.map((info, key: Key) => (
 						<Box
@@ -128,6 +149,8 @@ export default function Banner() {
 						</Box>
 					))}
 				</Box>
+
+				{/* Third Col */}
 				<Box
 					paddingX={'32px'}
 					paddingY={'36px'}
@@ -135,6 +158,7 @@ export default function Banner() {
 					flexDirection={'column'}
 					gap={'12px'}
 					width={'100%'}
+					justifyContent={'center'}
 				>
 					{thirdColumnInfoList.map((info, key: Key) => (
 						<Box
