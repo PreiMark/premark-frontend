@@ -41,7 +41,9 @@ const Container = styled.div`
   justify-content: center;
   align-items: center;
   gap: 100px;
-  margin-top: 40px;
+  @media (max-width: 768px) {
+    margin-top: 450px;
+  }
 `;
 const ContentRight = styled.div`
   display: flex;
@@ -98,5 +100,8 @@ const Title = styled.div`
   align-items: center;
   @media (max-width: 420px) {
     font-size: 32px;
+  }
+  @media (max-width: 768px) {
+    text-align: center;
   }
 `;
