@@ -1,8 +1,8 @@
-import { Button, Stack } from "@mui/material";
-import Image from "next/image";
-import * as React from "react";
-import styled from "styled-components";
-import hero from "@/assets/images/hero.png";
+import { Button, Stack } from '@mui/material';
+import Image from 'next/image';
+import * as React from 'react';
+import styled from 'styled-components';
+import hero from '@/assets/images/hero.png';
 
 export interface IBannerProps {}
 
@@ -20,16 +20,16 @@ export default function Banner(props: IBannerProps) {
 }
 
 const ButtonJoin = styled(Button)`
-  width: 150px;
-  height: 45px;
-  border-radius: 12px;
-  background-color: #ffff;
-  color: #000;
-  padding: 12px;
-  text-transform: capitalize;
-  &:hover {
-    background-color: #e3e3e3;
-  }
+	width: 150px;
+	height: 45px;
+	border-radius: 12px;
+	background-color: #ffff;
+	color: #000;
+	padding: 12px;
+	text-transform: capitalize;
+	&:hover {
+		background-color: #e3e3e3;
+	}
 `;
 
 const StackBanner = styled(Stack)`
