@@ -33,6 +33,6 @@ export const ORDER_STEPS = [
 
 export const LIST_MENU = [
 	{ title: 'About', url: '/' },
-	{ title: 'Feature', url: '/' },
+	{ title: 'Feature', url: '/market' },
 	{ title: 'Roadmap', url: '/' },
 ];
