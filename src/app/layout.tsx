@@ -17,20 +17,20 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-	return (
-		<html lang='en'>
-			<body>
-				<SolWalletProvider>
-					<AppRouterCacheProvider
-						options={{ key: 'css', enableCssLayer: true }}
-					>
-						<ThemeProvider theme={theme}>
-							<CssBaseline />
-							{children}
-						</ThemeProvider>
-					</AppRouterCacheProvider>
-				</SolWalletProvider>
-			</body>
-		</html>
-	);
+  return (
+    <html lang="en">
+      <body>
+        <SolWalletProvider>
+          <AppRouterCacheProvider
+            options={{ key: "css", enableCssLayer: true }}
+          >
+            <ThemeProvider theme={theme}>
+              <CssBaseline />
+              {children}
+            </ThemeProvider>
+          </AppRouterCacheProvider>
+        </SolWalletProvider>
+      </body>
+    </html>
+  );
 }
