@@ -4,7 +4,6 @@ import { Box, Grid } from '@mui/material';
 import Navbar from '../components/Navbar';
 import Banner from '../components/Banner';
 import OrderCard from '../components/OrderCard';
-import { Key } from 'react';
 
 export default function MarketPage() {
 	return (
