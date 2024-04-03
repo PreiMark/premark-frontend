@@ -19,10 +19,7 @@ export default function Footer(props: IFooterProps) {
       <SectionFooter>
         <Stack spacing={4}>
           <Logo />
-          <p>
-            All Your Data in One Place. <br />
-            Search, Find, and Dig Deeper with AI.
-          </p>
+          <p>Cross-chain pre market for points</p>
           <Stack direction={"row"}>
             <Link href={"/"}>
               <IconWeb />
@@ -70,7 +67,7 @@ const SectionFooter = styled.section`
   padding: 48px 64px 48px 24px;
   border-bottom: 1px solid #2e2e2e;
   p {
-    color: #fff;
+    color: #9ca3af;
   }
   .menu {
     font-size: 16px;

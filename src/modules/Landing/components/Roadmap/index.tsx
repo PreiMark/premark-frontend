@@ -1,10 +1,10 @@
 import * as React from "react";
 import Image from "next/image";
-import { Button } from "@mui/material";
 import styled from "styled-components";
-import { LINK_VIDEO_PRODUCTION } from "@/constant";
-import timeline from "@/assets/images/timeline.png";
+import vector1 from "@/assets/images/Vector-6.svg";
+import vector2 from "@/assets/images/Vector-7.svg";
 import roadmap from "@/assets/images/roadmap.png";
+import { IconCheck, VectorOne, VectorTwo } from "@/assets/icons";
 
 export interface IRoadmapProps {}
 
@@ -14,13 +14,7 @@ export default function Roadmap(props: IRoadmapProps) {
       <ContentLeft>
         <ImgCustom>
           <ImageRoalmap>
-            <Image
-              src={roadmap.src}
-              // width={564}
-              // height={1002}
-              alt="roadmap_premark"
-              layout="fill"
-            />
+            <Image src={roadmap.src} alt="roadmap_premark" layout="fill" />
           </ImageRoalmap>
           <Content>
             <PreMark>premark</PreMark>
@@ -29,13 +23,80 @@ export default function Roadmap(props: IRoadmapProps) {
         </ImgCustom>
       </ContentLeft>
       <ContentRight>
-        <Image
-          src={timeline.src}
-          // width={784}
-          // height={736}
-          alt="timeline_premark"
-          layout="fill"
-        />
+        <TimeLineWrapper>
+          <TimeLineCustom>
+            <Time>
+              <VectorCustom className="vector-1">
+                <VectorOne />
+              </VectorCustom>
+              <TimeText>Apr/2024</TimeText>
+              <VectorCustom className="vector-2">
+                <VectorTwo />
+              </VectorCustom>
+            </Time>
+            <Line></Line>
+          </TimeLineCustom>
+          <TimeLineCustom>
+            <Time>
+              <VectorCustom className="vector-1">
+                <VectorOne />
+              </VectorCustom>
+              <TimeText>Jun/2024</TimeText>
+              <VectorCustom className="vector-2">
+                <VectorTwo />
+              </VectorCustom>
+            </Time>
+            <Line></Line>
+          </TimeLineCustom>
+          <TimeLineCustom>
+            <Time>
+              <VectorCustom className="vector-1">
+                <VectorOne />
+              </VectorCustom>
+              <TimeText>Sep/2024</TimeText>
+              <VectorCustom className="vector-2">
+                <VectorTwo />
+              </VectorCustom>
+            </Time>
+            <Line></Line>
+          </TimeLineCustom>
+        </TimeLineWrapper>
+        <Launch>
+          <LaunchItem>
+            <LaunchHeading>
+              <IconCheck />
+              Launch MVP
+            </LaunchHeading>
+            <LaunchList>
+              <LaunchListItem>- Buy and Sell Points feature</LaunchListItem>
+              <LaunchListItem>- Integrate Wormhole</LaunchListItem>
+              <LaunchListItem>- Listing 10 SOL projects</LaunchListItem>
+            </LaunchList>
+          </LaunchItem>
+          <LaunchItem>
+            <LaunchHeading>
+              <IconCheck />
+              Launch MVP
+            </LaunchHeading>
+            <LaunchList>
+              <LaunchListItem>- Staking feature</LaunchListItem>
+              <LaunchListItem>- Launch community</LaunchListItem>
+              <LaunchListItem>- Asia market development</LaunchListItem>
+            </LaunchList>
+          </LaunchItem>
+          <LaunchItem>
+            <LaunchHeading>
+              <IconCheck />
+              Launch MVP
+            </LaunchHeading>
+            <LaunchList>
+              <LaunchListItem>- Bidding for points</LaunchListItem>
+              <LaunchListItem>- NFT Market</LaunchListItem>
+              <LaunchListItem>- Pre-TGE Market</LaunchListItem>
+              <LaunchListItem>- OTC Market</LaunchListItem>
+            </LaunchList>
+          </LaunchItem>
+        </Launch>
       </ContentRight>
     </Container>
   );
@@ -43,19 +104,27 @@ export default function Roadmap(props: IRoadmapProps) {
 
 const Container = styled.div`
   display: flex;
-  align-items: center;
-  gap: 100px;
-  position: relative;
+  align-items: flex-start;
   margin-top: 40px;
-
+  position: relative;
   @media (max-width: 1024px) {
     flex-direction: column;
-    gap: 0;
   }
 `;
 const ContentLeft = styled.div`
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
   @media (max-width: 1024px) {
-    flex-direction: column;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  @media (max-width: 768px) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* flex-direction: row-reverse; */
   }
 `;
 
@@ -67,11 +136,15 @@ const ImageRoalmap = styled.div`
   width: 564px;
   height: 1002px;
   @media (max-width: 1024px) {
-    width: 764px;
+    width: 864px;
     height: 1002px;
   }
   @media (max-width: 768px) {
-    width: 464px;
+    width: 564px;
+    height: 702px;
+  }
+  @media (max-width: 420px) {
+    width: 364px;
     height: 502px;
   }
 `;
@@ -86,35 +159,35 @@ const Content = styled.div`
   left: 12%;
   @media (max-width: 768px) {
     top: 13%;
-    left: 18%;
+    left: 10%;
   }
   @media (max-width: 420px) {
-    top: -4%;
-    left: 18%;
+    top: 13;
+    left: 0;
   }
 `;
 
 const ContentRight = styled.div`
   display: flex;
-  flex-direction: column;
-  gap: 16px;
-  position: absolute;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
   left: 38%;
   width: 784px;
   height: 736px;
   @media (max-width: 1024px) {
-    position: relative;
-    left: 0;
     margin: auto;
     width: 884px;
     height: 836px;
   }
   @media (max-width: 768px) {
-    position: relative;
-    left: 0;
     margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 300px;
     height: 336px;
+    position: none;
   }
 `;
 const PreMark = styled.div`
@@ -141,4 +214,124 @@ const Title = styled.div`
   font-weight: 700;
   line-height: 54px;
   color: #fff;
+  @media (max-width: 420px) {
+    font-size: 40px;
+  }
+`;
+
+const TimeLineWrapper = styled.div`
+  padding-left: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 200px;
+  width: 30%;
+  @media (max-width: 1024px) {
+    /* gap: 20px; */
+    gap: 220px;
+  }
+  @media (max-width: 768px) {
+    gap: 200px;
+    margin-top: 300px;
+    margin-left: 220px;
+  }
+  @media (max-width: 420px) {
+    gap: 200px;
+    margin-top: 300px;
+    margin-left: 250px;
+  }
+`;
+const TimeLineCustom = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+const Time = styled.div`
+  position: relative;
+  .vector-1 {
+    top: -15px;
+    left: -15px;
+  }
+  .vector-2 {
+    bottom: -10px;
+    right: 20px;
+  }
+`;
+const VectorCustom = styled.span`
+  position: absolute;
+`;
+const TimeText = styled.p`
+  color: #fff;
+  font-size: 14px;
+  width: 110px;
+`;
+const Line = styled.div`
+  width: 175px;
+  height: 1px;
+  background: #5b5959;
+  @media (max-width: 1024px) {
+    display: block;
+    width: 205px;
+  }
+  @media (max-width: 768px) {
+    display: none;
+  }
+`;
+const Launch = styled.div`
+  min-width: 453px;
+  height: 100%;
+  border: 1px solid #5b5959;
+  :last-child {
+    border-bottom: none;
+  }
+  @media (max-width: 1024px) {
+    justify-content: center;
+  }
+  @media (max-width: 768px) {
+    border: none;
+  }
+`;
+const LaunchItem = styled.div`
+  padding: 50px 30px;
+  border-bottom: 1px solid #5b5959;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  @media (max-width: 1024px) {
+    justify-content: center;
+  }
+  @media (max-width: 768px) {
+    align-items: flex-start;
+    padding: 40px 20px;
+    width: 250px;
+  }
+  @media (max-width: 420px) {
+    width: 230px;
+    align-items: flex-start;
+  }
+`;
+const LaunchHeading = styled.h3`
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  color: #fff;
+`;
+const LaunchList = styled.ul`
+  color: #918da4;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 15px;
+  padding-top: 20px;
+  @media (max-width: 1024px) {
+  }
+  @media (max-width: 768px) {
+  }
+  @media (max-width: 420px) {
+  }
+`;
+
+const LaunchListItem = styled.li`
+  list-style: none;
 `;

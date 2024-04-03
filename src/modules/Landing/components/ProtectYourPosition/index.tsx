@@ -1,7 +1,7 @@
 import * as React from "react";
 import Image from "next/image";
 import styled from "styled-components";
-import protect from "@/assets/images/protect.png";
+import protect from "@/assets/images/protect.svg";
 
 export interface IProtectYourPositionProps {}
 
@@ -11,7 +11,7 @@ export default function ProtectYourPosition(props: IProtectYourPositionProps) {
       <ImgCustom>
         <Content>
           <PreMark>premark</PreMark>
-          <Title>Protect your position </Title>
+          <Title>Secure Your Transaction</Title>
         </Content>
         <BackGround>
           <Image
