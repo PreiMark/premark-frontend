@@ -8,3 +8,5 @@ export { default as IconClose } from "./IconClose";
 export { default as IconCheck } from "./IconCheck";
 export { default as VectorOne } from "./VectorOne";
 export { default as VectorTwo } from "./VectorTwo";
+export { default as IconInova } from "./IconInova";
+export { default as IconPos } from "./IconPos";

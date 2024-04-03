@@ -4,23 +4,19 @@ import { LINK_VIDEO_DONORS } from "@/constant";
 export interface IDonorsProps {}
 import donors from "@/assets/images/donors.png";
 import Image from "next/image";
+import { IconInova, IconPos } from "@/assets/icons";
 
 export default function Donors(props: IDonorsProps) {
   return (
     <Container>
       <ContentRight>
         <PreMark>premark</PreMark>
-        <Title>Collaborate, Innovate</Title>
-        <Title>Succeed: Bringing Ideas to Life</Title>
+        <Title>Search - Buy - Secure</Title>
+        <Title>Access Early Opportunities At Ease</Title>
       </ContentRight>
       <ImageDonors>
-        <Image
-          src={donors.src}
-          // width={1118}
-          // height={210}
-          alt="donors_premark"
-          layout="fill"
-        />
+        <IconInova />
+        <IconPos />
       </ImageDonors>
       <video
         style={{ borderRadius: "16px" }}
@@ -55,8 +51,13 @@ const ContentRight = styled.div`
 
 const ImageDonors = styled.div`
   position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 50px;
   width: 1118px;
-  height: 210px;
+  margin-top: -50px;
+
   @media (max-width: 1024px) {
     margin: auto;
     width: 868px;
