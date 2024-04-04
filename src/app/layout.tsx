@@ -21,9 +21,7 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <SolWalletProvider>
-          <AppRouterCacheProvider
-            options={{ key: "css", enableCssLayer: true }}
-          >
+          <AppRouterCacheProvider>
             <ThemeProvider theme={theme}>
               <CssBaseline />
               {children}

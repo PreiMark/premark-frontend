@@ -5,7 +5,7 @@ import React, { useEffect } from "react"
 export default function useMarket () {
   const [listOffer, setListOffer] = React.useState<any[]>([])
   const searchParams = useSearchParams()
-  const offerType = searchParams.get('offerType')
+  const offerType = searchParams.get('offerType') ?? 'Buy'
   
   const getOffer = async () => {
     const res = await getOfferApi(offerType as any)
