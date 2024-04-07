@@ -6,15 +6,21 @@ import Wormhole from "@/assets/images/wormhole.svg";
 import Solona from "@/assets/images/solana.svg";
 
 import hero from "@/assets/images/hero.png";
+import theme from "@/styles/theme";
 export interface IBannerProps {}
 
 export default function Banner(props: IBannerProps) {
   return (
+
     <Box
-    width={'100%'}
-    display={'flex'}
-    alignItems={'center'}
-    justifyContent={'center'}
+    sx={{
+			[theme.breakpoints.up('sm')]: {
+				width:'100%',
+        display:'flex',
+        alignItems:'center',
+        justifyContent:'center'
+			  },
+		}}
     >
 <StackBanner direction={"row"}>
       <CrossChain>
@@ -41,6 +47,8 @@ export default function Banner(props: IBannerProps) {
     
     </StackBanner>
     </Box>
+
+   
     
   );
 }
