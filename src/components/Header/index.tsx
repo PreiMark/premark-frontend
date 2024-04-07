@@ -7,11 +7,27 @@ import { Button, Stack } from '@mui/material';
 import { IconList } from '@/assets/icons';
 import SidebarMobile from '../SidebarMobile';
 import { LIST_MENU } from '@/constant';
+import { useWalletModal } from '@solana/wallet-adapter-react-ui';
+import { useWalletMultiButton } from '@solana/wallet-adapter-base-ui';
 
 export interface IHeaderProps {}
 
 export default function Header(props: IHeaderProps) {
 	const [showSidebar, setShowSidebar] = React.useState<boolean>(false);
+
+	const { setVisible: setModalVisible } = useWalletModal();
+	const {
+		buttonState,
+		onConnect,
+		onDisconnect,
+		publicKey,
+		walletIcon,
+		walletName,
+	} = useWalletMultiButton({
+		onSelectWallet() {
+			setModalVisible(true);
+		},
+	});
 
 	const handleShowSidebar = () => {
 		setShowSidebar(!showSidebar);
@@ -45,7 +61,9 @@ export default function Header(props: IHeaderProps) {
 				<ListButton onClick={handleShowSidebar}>
 					<IconList />
 				</ListButton>
-				<ButtonJoin>Join waitlist</ButtonJoin>
+				<ButtonJoin onClick={() => setModalVisible(true)}>
+					Join waitlist
+				</ButtonJoin>
 
 				<SidebarMobile
 					handleClose={handleCloseSidebar}

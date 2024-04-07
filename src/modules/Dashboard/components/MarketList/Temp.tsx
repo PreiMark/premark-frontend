@@ -26,6 +26,8 @@ export default function Temp() {
 					justifyContent={'center'}
 					borderRadius={'100%'}
 					overflow={'hidden'}
+					minWidth={'48px'}
+					minHeight={'48px'}
 				>
 					<Image
 						src={'/DEFAULT_IMAGE.png'}

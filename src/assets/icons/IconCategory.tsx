@@ -50,10 +50,10 @@ export default function IconCategory(props: TIconProps) {
 					y2='2.81502'
 					gradientUnits='userSpaceOnUse'
 				>
-					<stop stop-color={props.color} />
+					<stop stopColor={props.color} />
 					<stop
 						offset='1'
-						stop-color='#FFD2DD'
+						stopColor='#FFD2DD'
 					/>
 				</linearGradient>
 				<linearGradient
@@ -64,10 +64,10 @@ export default function IconCategory(props: TIconProps) {
 					y2='14.2515'
 					gradientUnits='userSpaceOnUse'
 				>
-					<stop stop-color={props.color} />
+					<stop stopColor={props.color} />
 					<stop
 						offset='1'
-						stop-color='#FFD2DD'
+						stopColor='#FFD2DD'
 					/>
 				</linearGradient>
 				<linearGradient
@@ -78,10 +78,10 @@ export default function IconCategory(props: TIconProps) {
 					y2='2.81692'
 					gradientUnits='userSpaceOnUse'
 				>
-					<stop stop-color={props.color} />
+					<stop stopColor={props.color} />
 					<stop
 						offset='1'
-						stop-color='#FFD2DD'
+						stopColor='#FFD2DD'
 					/>
 				</linearGradient>
 				<linearGradient
@@ -92,10 +92,10 @@ export default function IconCategory(props: TIconProps) {
 					y2='14.237'
 					gradientUnits='userSpaceOnUse'
 				>
-					<stop stop-color={props.color} />
+					<stop stopColor={props.color} />
 					<stop
 						offset='1'
-						stop-color='#FFD2DD'
+						stopColor='#FFD2DD'
 					/>
 				</linearGradient>
 			</defs>

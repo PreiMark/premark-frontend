@@ -40,7 +40,7 @@ export default function MarketListHeader() {
 						onClick={() => selectMarketType(type)}
 						size='large'
 					>
-						Trending
+						{type}
 					</Button>
 				))}
 			</Stack>
