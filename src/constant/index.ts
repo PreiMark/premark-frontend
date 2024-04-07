@@ -36,3 +36,5 @@ export const LIST_MENU = [
 	{ title: 'Feature', url: '/dashboard' },
 	{ title: 'Roadmap', url: '/' },
 ];
+
+export const MARKET_TYPE_LIST = ['Treding', 'Flash Deal'];

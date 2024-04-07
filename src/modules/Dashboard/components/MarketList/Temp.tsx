@@ -1,8 +1,24 @@
 import IconETH from '@/assets/icons/IconETH';
+import IconSolana from '@/assets/icons/IconSolana';
 import { Box, Button, Stack, Typography } from '@mui/material';
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
+import { useMemo } from 'react';
 
-export default function Temp() {
+export default function Temp({ data }: { data: any }) {
+	const router = useRouter();
+
+	const renderIcon = useMemo(() => {
+		switch (data.network) {
+			case 'SOLANA':
+				return <IconSolana />;
+			case 'ETHEREUM':
+				return <IconETH />;
+			default:
+				return <IconSolana />;
+		}
+	}, [data?.network]);
+
 	return (
 		<Box
 			display={'flex'}
@@ -40,7 +56,9 @@ export default function Temp() {
 					display={'flex'}
 					flexDirection={'column'}
 				>
-					<Typography fontWeight={700}>Inovaz</Typography>
+					<Typography fontWeight={700}>
+						{data.protocolName}
+					</Typography>
 					<Box
 						display={'flex'}
 						alignItems={'center'}
@@ -55,14 +73,14 @@ export default function Temp() {
 							width={'16px'}
 							height={'16px'}
 						>
-							<IconETH />
+							{renderIcon}
 						</Box>
 						<Typography
 							fontSize={'14px'}
 							lineHeight={'22px'}
 							color={'#C3C0C7'}
 						>
-							Ethereum
+							{data.network}
 						</Typography>
 					</Box>
 				</Box>
@@ -73,14 +91,15 @@ export default function Temp() {
 				display={'flex'}
 				alignItems={'center'}
 				justifyContent={'space-between'}
+				flexWrap={'wrap'}
 			>
-				<Box>
+				<Box width={'100%'}>
 					<Typography
 						fontSize={'13px'}
 						lineHeight={'21px'}
 						color={'#9E97A3'}
 					>
-						Price of range:
+						Price of point:
 					</Typography>
 					<Typography
 						color={'#FC3B69'}
@@ -88,10 +107,10 @@ export default function Temp() {
 						lineHeight={'22px'}
 						fontWeight={700}
 					>
-						0,3 -1 USDC/pts
+						{data.pricePerPoint} USDC/pts
 					</Typography>
 				</Box>
-				<Box>
+				<Box width={'100%'}>
 					<Typography
 						fontSize={'13px'}
 						lineHeight={'21px'}
@@ -104,6 +123,7 @@ export default function Temp() {
 						direction={'row'}
 						spacing={'4px'}
 						alignItems={'center'}
+						justifyContent={'flex-end'}
 					>
 						<Box
 							borderRadius={'100%'}
@@ -114,14 +134,15 @@ export default function Temp() {
 							width={'16px'}
 							height={'16px'}
 						>
-							<IconETH />
+							{renderIcon}
 						</Box>
 						<Typography
 							fontSize={'14px'}
 							lineHeight={'22px'}
 							fontWeight={700}
+							textAlign={'right'}
 						>
-							100k pts
+							{data.pointsAmount} pts
 						</Typography>
 					</Stack>
 				</Box>
@@ -133,7 +154,7 @@ export default function Temp() {
 				border={'1px dashed rgba(255,255,255,0.4)'}
 			/>
 
-			<Stack
+			{/* <Stack
 				direction={'row'}
 				justifyContent={'space-between'}
 			>
@@ -182,7 +203,8 @@ export default function Temp() {
 						$1M
 					</Typography>
 				</Box>
-			</Stack>
+			</Stack> */}
+
 			<Stack
 				direction={'row'}
 				spacing={'8px'}
@@ -191,6 +213,7 @@ export default function Temp() {
 				<Button
 					variant='outlined'
 					color='primary'
+					onClick={() => router.push(`/order/id=${data._id}`)}
 				>
 					EXPLORE MARKET
 				</Button>

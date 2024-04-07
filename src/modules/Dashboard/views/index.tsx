@@ -13,14 +13,14 @@ export default function DashboardPage() {
 			<Grid
 				item
 				xs={12}
-				md={8}
+				lg={8}
 			>
 				<MarketPoint />
 			</Grid>
 			<Grid
 				item
 				xs={12}
-				md={4}
+				lg={4}
 			>
 				<QuizPoint />
 			</Grid>

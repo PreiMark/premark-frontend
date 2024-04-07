@@ -1,29 +1,29 @@
 import IconFilter from '@/assets/icons/IconFilter';
 import IconResetFilter from '@/assets/icons/IconResetFilter';
-import { Box, Button, Divider, IconButton, Stack } from '@mui/material';
-import { Key, useCallback, useState } from 'react';
+import { Box, Button, Divider, Stack } from '@mui/material';
+import { Key } from 'react';
+import { OrderType } from '.';
+import { MARKET_TYPE_LIST } from '@/constant';
 
-const marketTypeList = ['Treding', 'Flash Deal'];
+interface MarketListHeaderProps {
+	marketType: string;
+	orderType: OrderType;
+	selectMarketType: (type: string) => void;
+	selectOrderType: (type: OrderType) => void;
+}
 
-type OrderType = 'buy' | 'sell';
-
-export default function MarketListHeader() {
-	const [marketType, setMarketType] = useState<string>(marketTypeList[0]);
-	const [orderType, setOrderType] = useState<OrderType>('buy');
-
-	const selectMarketType = useCallback((type: string) => {
-		setMarketType(type);
-	}, []);
-
-	const selectOrderType = useCallback((type: OrderType) => {
-		setOrderType(type);
-	}, []);
-
+export default function MarketListHeader({
+	marketType,
+	orderType,
+	selectMarketType,
+	selectOrderType,
+}: MarketListHeaderProps) {
 	return (
 		<Box
 			display={'flex'}
-			flexDirection={'row'}
+			flexDirection={{ xs: 'column', md: 'row' }}
 			alignItems={'center'}
+			gap={'16px'}
 			justifyContent={'space-between'}
 		>
 			{/* Market Filter */}
@@ -32,7 +32,7 @@ export default function MarketListHeader() {
 				spacing={'16px'}
 				flexGrow={1}
 			>
-				{marketTypeList.map((type: string, key: Key) => (
+				{MARKET_TYPE_LIST.map((type: string, key: Key) => (
 					<Button
 						key={key}
 						variant={marketType === type ? 'outlined' : 'contained'}
@@ -67,17 +67,19 @@ export default function MarketListHeader() {
 				>
 					<Button
 						variant='text'
-						color={orderType === 'buy' ? 'primary' : 'info'}
-						onClick={() => selectOrderType('buy')}
+						color={orderType === 'Buy' ? 'primary' : 'info'}
+						onClick={() => selectOrderType('Buy')}
 						size='small'
+						sx={{ background: '#000000' }}
 					>
 						Buy
 					</Button>
 					<Button
 						variant='text'
-						color={orderType === 'sell' ? 'primary' : 'info'}
-						onClick={() => selectOrderType('sell')}
+						color={orderType === 'Sell' ? 'primary' : 'info'}
+						onClick={() => selectOrderType('Sell')}
 						size='small'
+						sx={{ background: '#000000' }}
 					>
 						Sell
 					</Button>

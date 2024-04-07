@@ -34,12 +34,6 @@ const theme = createTheme({
 	components: {
 		MuiButton: {
 			styleOverrides: {
-				contained: {
-					background: '#000000',
-				},
-				text: {
-					background: '#000000',
-				},
 				outlined: {
 					background: '#000000',
 				},
@@ -59,11 +53,11 @@ const theme = createTheme({
 			styleOverrides: {
 				root: {
 					'&.Mui-completed': {
-						color: '#9945FF',
+						color: '#FFD12D',
 						border: 'none',
 					},
 					'&.Mui-active': {
-						color: '#08E5B2',
+						color: '#FC3B69',
 						border: 'none',
 					},
 					fontSize: '0.875rem',

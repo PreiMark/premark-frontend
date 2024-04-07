@@ -1,122 +1,44 @@
-import { Grid } from '@mui/material';
+import { Box, Grid } from '@mui/material';
 import Temp from './Temp';
+import { Key } from 'react';
 
-export default function MarketListMain() {
-	return (
-		<Grid
-			container
-			spacing={'16px'}
-		>
+interface MarketListMainProps {
+	projectData: any[];
+}
+
+export default function MarketListMain({ projectData }: MarketListMainProps) {
+	if (projectData?.length > 0) {
+		return (
 			<Grid
-				item
-				xl={12 / 5}
-				lg={3}
-				md={4}
-				sm={6}
-				xs={12}
+				container
+				spacing={'16px'}
 			>
-				<Temp />
+				{projectData.map((data: any, key: Key) => (
+					<Grid
+						key={key}
+						item
+						xl={12 / 5}
+						lg={3}
+						md={4}
+						sm={6}
+						xs={12}
+					>
+						<Temp data={data} />
+					</Grid>
+				))}
 			</Grid>
-			<Grid
-				item
-				xl={12 / 5}
-				lg={3}
-				md={4}
-				sm={6}
-				xs={12}
+		);
+	} else {
+		return (
+			<Box
+				width={'100%'}
+				height={'300px'}
+				display={'flex'}
+				alignItems={'center'}
+				justifyContent={'center'}
 			>
-				<Temp />
-			</Grid>
-			<Grid
-				item
-				xl={12 / 5}
-				lg={3}
-				md={4}
-				sm={6}
-				xs={12}
-			>
-				<Temp />
-			</Grid>
-			<Grid
-				item
-				xl={12 / 5}
-				lg={3}
-				md={4}
-				sm={6}
-				xs={12}
-			>
-				<Temp />
-			</Grid>
-			<Grid
-				item
-				xl={12 / 5}
-				lg={3}
-				md={4}
-				sm={6}
-				xs={12}
-			>
-				<Temp />
-			</Grid>
-			<Grid
-				item
-				xl={12 / 5}
-				lg={3}
-				md={4}
-				sm={6}
-				xs={12}
-			>
-				<Temp />
-			</Grid>
-			<Grid
-				item
-				xl={12 / 5}
-				lg={3}
-				md={4}
-				sm={6}
-				xs={12}
-			>
-				<Temp />
-			</Grid>
-			<Grid
-				item
-				xl={12 / 5}
-				lg={3}
-				md={4}
-				sm={6}
-				xs={12}
-			>
-				<Temp />
-			</Grid>
-			<Grid
-				item
-				xl={12 / 5}
-				lg={3}
-				md={4}
-				sm={6}
-				xs={12}
-			>
-				<Temp />
-			</Grid>
-			<Grid
-				item
-				xl={12 / 5}
-				lg={3}
-				md={4}
-				sm={6}
-				xs={12}
-			>
-				<Temp />
-			</Grid>
-			<Grid
-				item
-				xl={12 / 5}
-				lg={3}
-				md={4}
-				sm={6}
-				xs={12}
-			>
-				<Temp />
-			</Grid>
-		</Grid>
-	);
+				There is no project
+			</Box>
+		);
+	}
 }

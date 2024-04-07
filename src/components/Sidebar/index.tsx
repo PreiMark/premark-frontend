@@ -4,9 +4,12 @@ import {
 	IconAccount,
 	IconCategory,
 	IconCreateOrder,
+	IconLogOut,
 	IconSetting,
+	Logo,
 } from '@/assets/icons';
 import { usePathname, useRouter } from 'next/navigation';
+import Link from 'next/link';
 
 export default function Sidebar() {
 	const pathname = usePathname();
@@ -23,9 +26,12 @@ export default function Sidebar() {
 			position={'fixed'}
 			top={0}
 			left={0}
+			gap={'16px'}
 		>
 			{/* Logo */}
-			<Box></Box>
+			<Link href='/'>
+				<Logo />
+			</Link>
 
 			{/* Navigation */}
 			<Stack
@@ -95,8 +101,18 @@ export default function Sidebar() {
 
 			{/* Logout */}
 			<Button
+				startIcon={
+					<IconLogOut
+						width='24'
+						height='24'
+						color='#FFFFFF'
+					/>
+				}
 				color='info'
 				variant='text'
+				sx={{
+					justifyContent: 'flex-start',
+				}}
 			>
 				Logout
 			</Button>

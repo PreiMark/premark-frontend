@@ -78,7 +78,6 @@ export default function MarketPoint() {
 					</Stack>
 					<LinearProgressWithLabel
 						value={500}
-						maxValue={1000}
 						color='primary'
 					/>
 					<Stack

@@ -6,7 +6,7 @@ import {
 } from '@mui/material';
 
 export default function LinearProgressWithLabel(
-	props: LinearProgressProps & { value: number; maxValue: number },
+	props: LinearProgressProps & { value: number },
 ) {
 	return (
 		<Box
@@ -27,7 +27,7 @@ export default function LinearProgressWithLabel(
 				<Typography
 					variant='body2'
 					whiteSpace={'nowrap'}
-				>{`${props.value} / ${props.maxValue}`}</Typography>
+				>{`${props.value} / 1000`}</Typography>
 			</Box>
 		</Box>
 	);
