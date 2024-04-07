@@ -1,7 +1,7 @@
 import * as React from "react";
-import { Button } from "@mui/material";
+import { Button, Typography } from "@mui/material";
 import styled from "styled-components";
-import { LINK_VIDEO_PRODUCTION } from "@/constant";
+import { LINK_VIDEO_PRODUCT, LINK_VIDEO_PRODUCTION } from "@/constant";
 export interface ITradeALotOfAssetProps {}
 
 export default function TradeALotOfAsset(props: ITradeALotOfAssetProps) {
@@ -9,9 +9,9 @@ export default function TradeALotOfAsset(props: ITradeALotOfAssetProps) {
     <Container>
       <video
         style={{ borderRadius: "16px" }}
-        width={500}
-        height={552}
-        src={LINK_VIDEO_PRODUCTION}
+        width={2200}
+        height={1700}
+        src={LINK_VIDEO_PRODUCT}
         muted
         autoPlay
         loop
@@ -22,6 +22,7 @@ export default function TradeALotOfAsset(props: ITradeALotOfAssetProps) {
         <Description>
           Pre-listing allocation, NFT whitelist, rewardings point,...
         </Description>
+        <br/>
         <ButtonJoin variant="contained">Join Waitlist</ButtonJoin>
       </ContentRight>
     </Container>
@@ -29,7 +30,9 @@ export default function TradeALotOfAsset(props: ITradeALotOfAssetProps) {
 }
 
 const Container = styled.div`
+position: relative;
   display: flex;
+  justify-content: center;
   align-items: center;
   gap: 100px;
   margin-top: 40px;
@@ -42,10 +45,16 @@ const Container = styled.div`
   }
 `;
 const ContentRight = styled.div`
+position: absolute;
   display: flex;
+  align-items: center;
+  justify-content: center;
   flex-direction: column;
   gap: 16px;
   @media (max-width: 1024px) {
+  }
+  @media (max-width: 768px) {
+    text-align: center;
   }
 `;
 const PreMark = styled.div`
@@ -56,16 +65,13 @@ const PreMark = styled.div`
   height: 34px;
   border-radius: 100px;
   padding: 8px 16px;
-  color: linear-gradient(272.65deg, #9747ff 26.52%, #08e5b2 100%);
+ 
+  color: #C99EFF;
+  background: linear-gradient(161.81deg, #010214 14.93%, #BEA6FF 369.16%);
+
   text-transform: uppercase;
   font-size: 18px;
-  background: linear-gradient(
-    272.65deg,
-    #9747ff 26.52%,
-    #08e5b2 100%,
-    rgba(1, 2, 20, 1),
-    rgba(190, 166, 255, 1)
-  );
+  
 `;
 const Title = styled.div`
   font-size: 45px;

@@ -5,6 +5,7 @@ import vector1 from "@/assets/images/Vector-6.svg";
 import vector2 from "@/assets/images/Vector-7.svg";
 import roadmap from "@/assets/images/roadmap.png";
 import { IconCheck, VectorOne, VectorTwo } from "@/assets/icons";
+import { Box } from "@mui/material";
 
 export interface IRoadmapProps {}
 
@@ -18,11 +19,15 @@ export default function Roadmap(props: IRoadmapProps) {
           </ImageRoalmap>
           <Content>
             <PreMark>premark</PreMark>
+            
             <Title>Roadmap</Title>
           </Content>
         </ImgCustom>
       </ContentLeft>
-      <ContentRight>
+      <Box
+      minHeight={"80vh"}
+      >
+         <ContentRight>
         <TimeLineWrapper>
           <TimeLineCustom>
             <Time>
@@ -98,13 +103,16 @@ export default function Roadmap(props: IRoadmapProps) {
           </LaunchItem>
         </Launch>
       </ContentRight>
+      </Box>
+     
     </Container>
   );
 }
 
 const Container = styled.div`
   display: flex;
-  align-items: flex-start;
+  /* align-items: flex-start; */
+  align-items: center;
   margin-top: 40px;
   position: relative;
   @media (max-width: 1024px) {
@@ -155,8 +163,9 @@ const Content = styled.div`
   justify-content: center;
   align-items: center;
   position: absolute;
-  top: 19%;
-  left: 12%;
+  top: 30%;
+  left: 32%;
+  gap: 12px;
   @media (max-width: 768px) {
     top: 13%;
     left: 10%;
@@ -172,7 +181,7 @@ const ContentRight = styled.div`
   justify-content: center;
   align-items: center;
   gap: 50px;
-  left: 38%;
+  /* left: 38%; */
   width: 784px;
   height: 736px;
   @media (max-width: 1024px) {
@@ -198,16 +207,10 @@ const PreMark = styled.div`
   height: 34px;
   border-radius: 100px;
   padding: 8px 16px;
-  color: linear-gradient(272.65deg, #9747ff 26.52%, #08e5b2 100%);
   text-transform: uppercase;
   font-size: 18px;
-  background: linear-gradient(
-    272.65deg,
-    #9747ff 26.52%,
-    #08e5b2 100%,
-    rgba(1, 2, 20, 1),
-    rgba(190, 166, 255, 1)
-  );
+  color: #C99EFF;
+  background: linear-gradient(161.81deg, #010214 14.93%, #BEA6FF 369.16%);
 `;
 const Title = styled.div`
   font-size: 45px;

@@ -5,19 +5,28 @@ export interface IDonorsProps {}
 import donors from "@/assets/images/donors.png";
 import Image from "next/image";
 import { IconInova, IconPos } from "@/assets/icons";
+import { Box } from "@mui/material";
+
 
 export default function Donors(props: IDonorsProps) {
   return (
     <Container>
+      <Box
+      position={'absolute'}
+    
+      >
       <ContentRight>
         <PreMark>premark</PreMark>
         <Title>Search - Buy - Secure</Title>
         <Title>Access Early Opportunities At Ease</Title>
       </ContentRight>
+      <br/>
       <ImageDonors>
         <IconInova />
         <IconPos />
       </ImageDonors>
+      </Box>
+      
       <video
         style={{ borderRadius: "16px" }}
         width={471}
@@ -37,9 +46,13 @@ const Container = styled.div`
   justify-content: center;
   align-items: center;
   gap: 100px;
-  @media (max-width: 768px) {
-    margin-top: 450px;
-  }
+width: 100%;
+ 
+  background-image: url('/DonorBackgound.png');
+  background-repeat: no-repeat;
+
+  background-position: center;
+  
 `;
 const ContentRight = styled.div`
   display: flex;
@@ -47,16 +60,17 @@ const ContentRight = styled.div`
   align-items: center;
   flex-direction: column;
   gap: 16px;
+  
 `;
 
 const ImageDonors = styled.div`
-  position: relative;
+  /* position: relative; */
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 50px;
   width: 1118px;
-  margin-top: -50px;
+  /* margin-top: -50px; */
 
   @media (max-width: 1024px) {
     margin: auto;
@@ -82,16 +96,10 @@ const PreMark = styled.div`
   height: 34px;
   border-radius: 100px;
   padding: 8px 16px;
-  color: linear-gradient(272.65deg, #9747ff 26.52%, #08e5b2 100%);
   text-transform: uppercase;
   font-size: 18px;
-  background: linear-gradient(
-    272.65deg,
-    #9747ff 26.52%,
-    #08e5b2 100%,
-    rgba(1, 2, 20, 1),
-    rgba(190, 166, 255, 1)
-  );
+  color: #C99EFF;
+  background: linear-gradient(161.81deg, #010214 14.93%, #BEA6FF 369.16%);
 `;
 const Title = styled.div`
   font-size: 45px;

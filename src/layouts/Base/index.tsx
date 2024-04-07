@@ -28,6 +28,6 @@ const LayoutWrapper = styled.div`
 `;
 const Container = styled.div`
 	max-width: 1440px;
-	padding: 24px;
+	/* padding: 24px; */
 	margin: auto;
 `;
