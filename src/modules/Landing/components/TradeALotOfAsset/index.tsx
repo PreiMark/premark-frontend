@@ -7,15 +7,19 @@ export interface ITradeALotOfAssetProps {}
 export default function TradeALotOfAsset(props: ITradeALotOfAssetProps) {
   return (
     <Container>
+      <ContainerVideo>
       <video
-        style={{ borderRadius: "16px" }}
-        width={2200}
-        height={1700}
+        style={{ borderRadius: "16px", width:"100%", height:"100%" }}
+        // width={2200}
+        // height={1700}
+        
         src={LINK_VIDEO_PRODUCT}
         muted
         autoPlay
         loop
       />
+      </ContainerVideo>
+   
       <ContentRight>
         <PreMark>premark</PreMark>
         <Title>Multiple Assets, One Space</Title>
@@ -42,6 +46,18 @@ position: relative;
   @media (max-width: 768px) {
     gap: 26px;
     flex-direction: column-reverse;
+  }
+`;
+
+const ContainerVideo = styled.div`
+  width: 2200px;
+  height: 1700px;
+  /* @media (max-width: 1024px) {
+    
+  } */
+  @media (max-width: 768px) {
+   width: 870px;
+   height: 800px;
   }
 `;
 const ContentRight = styled.div`

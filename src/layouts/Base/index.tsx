@@ -27,7 +27,8 @@ const LayoutWrapper = styled.div`
 	min-height: 100vh;
 `;
 const Container = styled.div`
-	max-width: 1440px;
+	/* max-width: 1440px; */
+	width: 100%;
 	/* padding: 24px; */
-	margin: auto;
+	/* margin: auto; */
 `;

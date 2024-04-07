@@ -1,4 +1,4 @@
-import { Button, Stack, Typography } from "@mui/material";
+import { Box, Button, Stack, Typography } from "@mui/material";
 import Image from "next/image";
 import * as React from "react";
 import styled from "styled-components";
@@ -10,7 +10,13 @@ export interface IBannerProps {}
 
 export default function Banner(props: IBannerProps) {
   return (
-    <StackBanner direction={"row"}>
+    <Box
+    width={'100%'}
+    display={'flex'}
+    alignItems={'center'}
+    justifyContent={'center'}
+    >
+<StackBanner direction={"row"}>
       <CrossChain>
         <Typography 
         variant="h1" 
@@ -34,6 +40,8 @@ export default function Banner(props: IBannerProps) {
       </BackGround>
     
     </StackBanner>
+    </Box>
+    
   );
 }
 
@@ -64,12 +72,14 @@ const ButtonJoin = styled(Button)`
 const StackBanner = styled(Stack)`
   justify-content: space-between;
   align-items: center;
-  width: 100%;
+  max-width: 1440px; 
   gap: 100px;
   margin-top: 40px;
 
   @media (max-width: 1024px) {
     gap: 26px;
+   padding: 20px;
+
     flex-direction: column;
   }
 `;

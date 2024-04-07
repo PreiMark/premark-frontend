@@ -47,6 +47,7 @@ const Container = styled.div`
   align-items: center;
   gap: 100px;
 width: 100%;
+margin-bottom: 80px;
  
   background-image: url('/DonorBackgound.png');
   background-repeat: no-repeat;

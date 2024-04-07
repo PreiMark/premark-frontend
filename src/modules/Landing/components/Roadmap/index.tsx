@@ -112,6 +112,7 @@ export default function Roadmap(props: IRoadmapProps) {
 const Container = styled.div`
   display: flex;
   /* align-items: flex-start; */
+  justify-content: space-between;
   align-items: center;
   margin-top: 40px;
   position: relative;
@@ -120,6 +121,7 @@ const Container = styled.div`
   }
 `;
 const ContentLeft = styled.div`
+width: 30%;
   display: flex;
   align-items: flex-start;
   justify-content: center;
@@ -177,6 +179,8 @@ const Content = styled.div`
 `;
 
 const ContentRight = styled.div`
+width: 70%;
+padding-right: 150px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -188,6 +192,7 @@ const ContentRight = styled.div`
     margin: auto;
     width: 884px;
     height: 836px;
+    
   }
   @media (max-width: 768px) {
     margin: auto;
@@ -197,6 +202,8 @@ const ContentRight = styled.div`
     width: 300px;
     height: 336px;
     position: none;
+padding-right: 0;
+
   }
 `;
 const PreMark = styled.div`

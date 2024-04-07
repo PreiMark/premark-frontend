@@ -6,7 +6,7 @@ import {
 	Logo,
 } from '@/assets/icons';
 import { FOOTER } from '@/constant';
-import { Stack } from '@mui/material';
+import { Box, Divider, Stack } from '@mui/material';
 import Link from 'next/link';
 import * as React from 'react';
 import styled from 'styled-components';
@@ -15,8 +15,24 @@ export interface IFooterProps {}
 
 export default function Footer(props: IFooterProps) {
 	return (
-		<>
-			<SectionFooter>
+		<Box
+		width={'100%'}
+		margin={'auto'}
+		sx={{
+	backgroundColor: "#000"
+
+		}}
+		
+		>
+
+			
+
+<SectionFooter>
+				<Box
+				width={'100%'}
+				display={'flex'}
+				justifyContent={'space-between'}
+				>
 				<Stack spacing={4}>
 					<Logo />
 					<p>Cross-chain pre market for points</p>
@@ -56,8 +72,15 @@ export default function Footer(props: IFooterProps) {
 						</Stack>
 					))}
 				</Stack>
-			</SectionFooter>
-			<BottomHeader>
+				</Box>
+				<br/>
+				<Divider sx={{
+					height:'1px',
+					width:"100%",
+					borderColor:"#B47AFF"
+				}} />
+
+				<BottomHeader>
 				<p>© 2024 Premark Inc. All rights reserved.</p>
 				<Stack
 					direction={'row'}
@@ -67,14 +90,20 @@ export default function Footer(props: IFooterProps) {
 					<p>Terms of Service</p>
 				</Stack>
 			</BottomHeader>
-		</>
+			</SectionFooter>
+			
+			
+			
+			
+		</Box>
 	);
 }
 
 const SectionFooter = styled.section`
 	display: flex;
-	justify-content: space-between;
-	background-color: #000;
+	gap: 10px;
+	flex-direction: column;
+	/* justify-content: space-between; */
 	width: 100%;
 	max-width: 1440px;
 	margin: auto;
