@@ -11,6 +11,7 @@ import { Box } from "@mui/material";
 export default function Donors(props: IDonorsProps) {
   return (
     <Container>
+         
       <Box
       position={'absolute'}
     
@@ -48,11 +49,14 @@ const Container = styled.div`
   gap: 100px;
 width: 100%;
 margin-bottom: 80px;
- 
+  height: 80vh;
   background-image: url('/DonorBackgound.png');
   background-repeat: no-repeat;
-
+  background-size: cover;
   background-position: center;
+  @media (max-width: 768px) {
+    height: auto;
+  }
   
 `;
 const ContentRight = styled.div`
