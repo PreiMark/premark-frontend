@@ -2,7 +2,7 @@
 import Header from '@/components/Header';
 import * as React from 'react';
 import styled from 'styled-components';
-import imageBg from '@/assets/images/Premark.png';
+import imageBg from '@/assets/images/BackgroundLanding.png';
 import Footer from '@/components/Footer';
 
 export interface ILayoutProviderProps {

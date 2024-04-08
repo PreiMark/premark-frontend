@@ -4,6 +4,7 @@ import { Box, Button, Divider, Stack } from '@mui/material';
 import { Key } from 'react';
 import { OrderType } from '.';
 import { MARKET_TYPE_LIST } from '@/constant';
+import { WalletMultiButton } from '@solana/wallet-adapter-react-ui';
 
 interface MarketListHeaderProps {
 	marketType: string;
@@ -66,20 +67,18 @@ export default function MarketListHeader({
 					spacing={'8px'}
 				>
 					<Button
-						variant='text'
+						variant={'contained'}
 						color={orderType === 'Buy' ? 'primary' : 'info'}
 						onClick={() => selectOrderType('Buy')}
 						size='small'
-						sx={{ background: '#000000' }}
 					>
 						Buy
 					</Button>
 					<Button
-						variant='text'
+						variant={'contained'}
 						color={orderType === 'Sell' ? 'primary' : 'info'}
 						onClick={() => selectOrderType('Sell')}
 						size='small'
-						sx={{ background: '#000000' }}
 					>
 						Sell
 					</Button>

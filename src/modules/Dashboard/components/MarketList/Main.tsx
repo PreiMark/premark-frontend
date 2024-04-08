@@ -1,6 +1,6 @@
 import { Box, Grid } from '@mui/material';
-import Temp from './Temp';
 import { Key } from 'react';
+import ProjectCard from './ProjectCard';
 
 interface MarketListMainProps {
 	projectData: any[];
@@ -23,7 +23,7 @@ export default function MarketListMain({ projectData }: MarketListMainProps) {
 						sm={6}
 						xs={12}
 					>
-						<Temp data={data} />
+						<ProjectCard data={data} />
 					</Grid>
 				))}
 			</Grid>

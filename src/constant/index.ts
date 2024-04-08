@@ -38,3 +38,5 @@ export const LIST_MENU = [
 ];
 
 export const MARKET_TYPE_LIST = ['Treding', 'Flash Deal'];
+
+export const ORDER_NETWORK_LIST = ['solana', 'ethereum'];

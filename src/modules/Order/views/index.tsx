@@ -3,23 +3,68 @@
 import { Box, Button } from '@mui/material';
 import styled from 'styled-components';
 import NetworkAndTypeStep from '../components/NetworkAndTypeStep';
-import { useCallback, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import DetailSettingsStep from '../components/DetailSettingsStep';
 import ReviewAndCreateStep from '../components/ReviewAndCreateStep';
 import OrderStepper from '../components/OrderStepper';
-import { useProvider } from '@/hooks/useProvider';
+import { OrderType } from '@/modules/Dashboard/components/MarketList';
+import { ORDER_NETWORK_LIST } from '@/constant';
+import axiosInstance from '@/config/axios.config';
+import { useWalletModal } from '@solana/wallet-adapter-react-ui';
+import { useWalletMultiButton } from '@solana/wallet-adapter-base-ui';
 
 export interface IMarketPage {}
 
 export default function OrderPage(props: IMarketPage) {
 	const [crrStep, setCrrStep] = useState<number>(0);
-	// const { open, setOpen } = useWalletDialog();
+	const [orderType, setOrderType] = useState<OrderType>('Buy');
+	const [network, setNetwork] = useState<string>(ORDER_NETWORK_LIST[0]);
+	const [totalPoints, setTotalPoints] = useState<number>(0);
+	const [totalPrice, setTotalPrice] = useState<number>(0);
+	const [orderData, setOrderData] = useState<any>();
+	const { setVisible: setModalVisible } = useWalletModal();
+	const { publicKey } = useWalletMultiButton({
+		onSelectWallet() {
+			setModalVisible(true);
+		},
+	});
+	useEffect(() => {
+		if (orderData && orderData?.pricePerPoint) {
+			setTotalPrice(totalPoints * orderData?.pricePerPoint);
+		}
+	}, [totalPoints, orderData, setTotalPrice]);
 
-	const provider = useProvider();
-
-	const handleNextStep = useCallback(() => {
-		setCrrStep((prevStep) => prevStep + 1);
-	}, []);
+	const handleNextStep = useCallback(async () => {
+		if (crrStep < 2) {
+			setCrrStep((prevStep) => prevStep + 1);
+		} else {
+			if (orderData && publicKey) {
+				const submitData = {
+					marketType: 'Points',
+					offerType: orderType,
+					network: network,
+					userId: publicKey.toBase58(),
+					protocolId: orderData.protocolId,
+					pointsAmount: totalPoints,
+					currency: 'USDT',
+					currencyAmount: totalPrice,
+				};
+				try {
+					await axiosInstance.post('/offer/create', submitData);
+				} catch (error) {
+					console.log(error);
+				}
+			}
+		}
+	}, [
+		crrStep,
+		network,
+		orderType,
+		publicKey,
+		orderData,
+		totalPoints,
+		totalPrice,
+	]);
 
 	const handlePrevStep = useCallback(() => {
 		setCrrStep((prevStep) => prevStep - 1);
@@ -28,15 +73,46 @@ export default function OrderPage(props: IMarketPage) {
 	const renderCrrStep = useMemo(() => {
 		switch (crrStep) {
 			case 0:
-				return <NetworkAndTypeStep />;
+				return (
+					<NetworkAndTypeStep
+						orderType={orderType}
+						setOrderType={setOrderType}
+						network={network}
+						setNetwork={setNetwork}
+					/>
+				);
 			case 1:
-				return <DetailSettingsStep />;
+				return (
+					<DetailSettingsStep
+						orderType={orderType}
+						network={network}
+						orderData={orderData}
+						totalPrice={totalPrice}
+						setTotalPoints={setTotalPoints}
+						setOrderData={setOrderData}
+					/>
+				);
 			case 2:
-				return <ReviewAndCreateStep />;
+				return (
+					<ReviewAndCreateStep
+						orderData={orderData}
+						totalPoints={totalPoints}
+						totalPrice={totalPrice}
+						orderType={orderType}
+					/>
+				);
 			default:
 				break;
 		}
-	}, [crrStep]);
+	}, [
+		crrStep,
+		orderType,
+		network,
+		setNetwork,
+		totalPrice,
+		orderData,
+		totalPoints,
+	]);
 
 	return (
 		<GradientContainer>
@@ -48,7 +124,7 @@ export default function OrderPage(props: IMarketPage) {
 			>
 				{crrStep !== 0 && (
 					<Button
-						color='info'
+						color='secondary'
 						variant='outlined'
 						fullWidth
 						onClick={handlePrevStep}
@@ -56,16 +132,14 @@ export default function OrderPage(props: IMarketPage) {
 						Back
 					</Button>
 				)}
-				{crrStep !== 2 && (
-					<Button
-						color='primary'
-						variant='contained'
-						fullWidth
-						onClick={handleNextStep}
-					>
-						Next
-					</Button>
-				)}
+				<Button
+					color='primary'
+					variant='contained'
+					fullWidth
+					onClick={handleNextStep}
+				>
+					{crrStep < 2 ? 'Next' : `Deposit ${totalPrice} USDC`}
+				</Button>
 			</Box>
 		</GradientContainer>
 	);

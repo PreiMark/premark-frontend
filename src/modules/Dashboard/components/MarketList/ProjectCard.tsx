@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { useMemo } from 'react';
 
-export default function Temp({ data }: { data: any }) {
+export default function ProjectCard({ data }: { data: any }) {
 	const router = useRouter();
 
 	const renderIcon = useMemo(() => {
@@ -91,7 +91,7 @@ export default function Temp({ data }: { data: any }) {
 				display={'flex'}
 				alignItems={'center'}
 				justifyContent={'space-between'}
-				flexWrap={'wrap'}
+				flexWrap={'nowrap'}
 			>
 				<Box width={'100%'}>
 					<Typography
@@ -213,7 +213,7 @@ export default function Temp({ data }: { data: any }) {
 				<Button
 					variant='outlined'
 					color='primary'
-					onClick={() => router.push(`/order/id=${data._id}`)}
+					onClick={() => router.push(`/order?id=${data._id}`)}
 				>
 					EXPLORE MARKET
 				</Button>
