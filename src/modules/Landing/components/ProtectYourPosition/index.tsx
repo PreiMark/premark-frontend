@@ -1,18 +1,19 @@
 import * as React from "react";
 import Image from "next/image";
 import styled from "styled-components";
-import protect from "@/assets/images/protect.svg";
+import protect from "@/assets/images/protect.png";
 
 export interface IProtectYourPositionProps {}
 
 export default function ProtectYourPosition(props: IProtectYourPositionProps) {
   return (
     <Container>
-      <ImgCustom>
-        <Content>
+      <Content>
           <PreMark>premark</PreMark>
-          <Title>Secure Your Transaction</Title>
+          <Title>What is the DWF Liquid Markets?</Title>
         </Content>
+      <ImgCustom>
+        
         <BackGround>
           <Image
             src={protect.src}
@@ -36,20 +37,23 @@ const Container = styled.div`
   margin-top: 40px;
 `;
 const Content = styled.div`
-  position: absolute;
+  /* position: absolute; */
   display: flex;
   flex-direction: column;
   justify-content: center;
   gap: 20px;
   align-items: center;
-  left: 34.5%;
-  top: 7%;
+  /* left: 34.5%; */
+  /* top: 7%; */
   @media (max-width: 1024px) {
     left: 25.5%;
+    text-align: center;
   }
   @media (max-width: 768px) {
     top: 0;
     left: 14.5%;
+    text-align: center;
+
   }
 `;
 
@@ -78,16 +82,11 @@ const PreMark = styled.div`
   height: 34px;
   border-radius: 100px;
   padding: 8px 16px;
-  color: linear-gradient(272.65deg, #9747ff 26.52%, #08e5b2 100%);
   text-transform: uppercase;
   font-size: 18px;
-  background: linear-gradient(
-    272.65deg,
-    #9747ff 26.52%,
-    #08e5b2 100%,
-    rgba(1, 2, 20, 1),
-    rgba(190, 166, 255, 1)
-  );
+  color: #C99EFF;
+  background: linear-gradient(161.81deg, #010214 14.93%, #BEA6FF 369.16%);
+
 `;
 const Title = styled.div`
   font-size: 45px;
