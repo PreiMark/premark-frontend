@@ -18,7 +18,7 @@ export default function useBalance () {
 
   React.useEffect(()=> {
     if(publicKey) getBalance()
-  }, [])
+  }, [publicKey])
 
   return {balance}
 }
