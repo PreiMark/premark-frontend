@@ -1,12 +1,47 @@
 import IconSolana from '@/assets/icons/IconSolana';
-import { Box, Radio, Typography } from '@mui/material';
-import { ChangeEvent, useState } from 'react';
+import { OrderType } from '@/modules/Dashboard/components/MarketList';
+import {
+	Box,
+	MenuItem,
+	Radio,
+	Select,
+	SelectChangeEvent,
+	Typography,
+} from '@mui/material';
+import { ChangeEvent, Key, useMemo } from 'react';
+import { ORDER_NETWORK_LIST } from '@/constant';
+import IconETH from '@/assets/icons/IconETH';
 
-export default function NetworkAndTypeStep() {
-	const [value, setValue] = useState<string>('buy');
+interface NetworkAndTypeStepProps {
+	orderType: OrderType;
+	network: string;
+	setOrderType: (type: OrderType) => void;
+	setNetwork: (network: string) => void;
+}
 
-	const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-		setValue((event.target as HTMLInputElement).value);
+export default function NetworkAndTypeStep({
+	orderType,
+	network,
+	setNetwork,
+	setOrderType,
+}: NetworkAndTypeStepProps) {
+	const handleOrderChange = (event: ChangeEvent<HTMLInputElement>) => {
+		setOrderType(event.target.value as OrderType);
+	};
+
+	const handleNetworkChange = (event: SelectChangeEvent) => {
+		setNetwork(event.target.value as string);
+	};
+
+	const renderIcon = (value: string) => {
+		switch (value) {
+			case 'solana':
+				return <IconSolana />;
+			case 'ethereum':
+				return <IconETH />;
+			default:
+				break;
+		}
 	};
 
 	return (
@@ -27,24 +62,48 @@ export default function NetworkAndTypeStep() {
 				>
 					Network
 				</Typography>
-				<Box
-					px={'0.75rem'}
-					py={'1rem'}
-					display={'flex'}
-					alignItems={'center'}
-					borderRadius={'0.5rem'}
-					gap={'0.75rem'}
-					border={'1px solid #6E727D'}
+				<Select
+					color='secondary'
+					value={network}
+					onChange={handleNetworkChange}
+					sx={{
+						border: '1px solid #6E727D',
+						borderRadius: '0.5rem',
+						height: 'min-content',
+						fontSize: '14px',
+						lineHeight: '20px',
+					}}
 				>
-					<IconSolana />
-					<Typography
-						fontSize={'0.875rem'}
-						fontWeight={600}
-						lineHeight={'1.25rem'}
-					>
-						0.0338
-					</Typography>
-				</Box>
+					{ORDER_NETWORK_LIST.map(
+						(orderNetwork: string, key: Key) => (
+							<MenuItem
+								value={orderNetwork}
+								key={key}
+								sx={{
+									height: 'min-content',
+									fontSize: '14px',
+									lineHeight: '20px',
+								}}
+							>
+								<Box
+									display={'flex'}
+									gap={'8px'}
+									alignItems={'center'}
+								>
+									{renderIcon(orderNetwork)}
+									<Typography
+										fontSize={'0.875rem'}
+										fontWeight={600}
+										lineHeight={'1.25rem'}
+										textTransform={'capitalize'}
+									>
+										{orderNetwork}
+									</Typography>
+								</Box>
+							</MenuItem>
+						),
+					)}
+				</Select>
 			</Box>
 			<Box
 				display={'flex'}
@@ -55,9 +114,9 @@ export default function NetworkAndTypeStep() {
 					alignItems={'flex-start'}
 				>
 					<Radio
-						checked={value === 'buy'}
-						onChange={handleChange}
-						value='buy'
+						checked={orderType === 'Buy'}
+						onChange={handleOrderChange}
+						value='Buy'
 						name='order-action'
 						color='secondary'
 						inputProps={{ 'aria-label': 'A' }}
@@ -91,9 +150,9 @@ export default function NetworkAndTypeStep() {
 					alignItems={'flex-start'}
 				>
 					<Radio
-						checked={value === 'sell'}
-						onChange={handleChange}
-						value='sell'
+						checked={orderType === 'Sell'}
+						onChange={handleOrderChange}
+						value='Sell'
 						name='order-action'
 						color='secondary'
 						inputProps={{ 'aria-label': 'B' }}

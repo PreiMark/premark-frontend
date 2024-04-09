@@ -27,7 +27,7 @@ const LayoutWrapper = styled.div`
 	min-height: 100vh;
 `;
 const Container = styled.div`
-	max-width: max-content;
+	max-width: 1440px;
 	padding: 32px;
 	margin: auto;
 `;

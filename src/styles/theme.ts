@@ -24,23 +24,30 @@ const theme = createTheme({
 			white: '#FFF',
 		},
 		primary: {
-			main: '#9945FF',
+			main: '#FC3B69',
 			contrastText: '#FFF',
 		},
 		secondary: {
-			main: '#08E5B2',
+			main: '#FFD12D',
 			contrastText: '#000',
 		},
 		info: {
-			main: '#6E727D',
-			contrastText: '#F1F1F1',
+			main: '#000000',
+			contrastText: '#FFFFFF',
 		},
 		text: {
 			primary: '#FFF',
-			disabled: '#6E727D',
+			disabled: '#C8C3D2',
 		},
 	},
 	components: {
+		MuiButton: {
+			styleOverrides: {
+				outlined: {
+					background: '#000000',
+				},
+			},
+		},
 		MuiRadio: {
 			styleOverrides: {
 				root: {
@@ -55,11 +62,11 @@ const theme = createTheme({
 			styleOverrides: {
 				root: {
 					'&.Mui-completed': {
-						color: '#9945FF',
+						color: '#FFD12D',
 						border: 'none',
 					},
 					'&.Mui-active': {
-						color: '#08E5B2',
+						color: '#FC3B69',
 						border: 'none',
 					},
 					fontSize: '0.875rem',
@@ -83,7 +90,9 @@ const theme = createTheme({
 			styleOverrides: {
 				rounded: {
 					borderRadius: '1rem',
-					backgroundColor: 'rgba(23, 29, 41, 0.50)',
+					border: '2px solid #000',
+					backgroundColor: 'rgba(0, 0, 0, 0.65)',
+					backdropFilter: 'blur(8px)',
 				},
 			},
 		},
