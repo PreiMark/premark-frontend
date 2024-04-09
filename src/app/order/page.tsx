@@ -1,6 +1,10 @@
-import BaseLayout from '@/layouts/Base';
+import DashboardLayout from '@/layouts/Dashboard';
 import OrderPage from '@/modules/Order/views';
 
 export default function Order() {
-	return <BaseLayout><OrderPage /></BaseLayout>;
+	return (
+		<DashboardLayout>
+			<OrderPage />
+		</DashboardLayout>
+	);
 }
