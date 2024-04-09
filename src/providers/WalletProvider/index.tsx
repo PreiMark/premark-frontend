@@ -1,35 +1,30 @@
-'use client';
+"use client";
 
-import { WalletAdapterNetwork } from '@solana/wallet-adapter-base';
+import { endpoint } from "@/utils/helper";
+import { WalletAdapterNetwork } from "@solana/wallet-adapter-base";
 import {
-	ConnectionProvider,
-	WalletProvider,
-} from '@solana/wallet-adapter-react';
-import { WalletModalProvider } from '@solana/wallet-adapter-react-ui';
+  ConnectionProvider,
+  WalletProvider,
+} from "@solana/wallet-adapter-react";
+import { WalletModalProvider } from "@solana/wallet-adapter-react-ui";
 
-import { PhantomWalletAdapter } from '@solana/wallet-adapter-wallets';
-import { clusterApiUrl } from '@solana/web3.js';
-import { ReactNode, useMemo } from 'react';
+import { PhantomWalletAdapter } from "@solana/wallet-adapter-wallets";
+import { ReactNode, useMemo } from "react";
 
 export default function SolWalletProvider({
-	children,
+  children,
 }: {
-	children: ReactNode;
+  children: ReactNode;
 }) {
-	const network = WalletAdapterNetwork.Devnet;
+  const network = WalletAdapterNetwork.Devnet;
 
-	const endpoint = useMemo(() => clusterApiUrl(network), [network]);
+  const wallets = useMemo(() => [new PhantomWalletAdapter()], []);
 
-	const wallets = useMemo(() => [new PhantomWalletAdapter()], []);
-
-	return (
-		<ConnectionProvider endpoint={endpoint}>
-			<WalletProvider
-				wallets={wallets}
-				autoConnect
-			>
-				<WalletModalProvider>{children}</WalletModalProvider>
-			</WalletProvider>
-		</ConnectionProvider>
-	);
+  return (
+    <ConnectionProvider endpoint={endpoint}>
+      <WalletProvider wallets={wallets} autoConnect>
+        <WalletModalProvider>{children}</WalletModalProvider>
+      </WalletProvider>
+    </ConnectionProvider>
+  );
 }
