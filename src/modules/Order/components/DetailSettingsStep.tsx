@@ -1,3 +1,4 @@
+import IconInovaz from '@/assets/icons/IconInovaz';
 import IconSolana from '@/assets/icons/IconSolana';
 import { ORDER_CURRENCY_LIST, ORDER_PROTOCOL_LIST } from '@/constant';
 import { OrderType } from '@/modules/Dashboard/components/MarketList';
@@ -147,7 +148,11 @@ export default function DetailSettingsStep({
 											justifyContent={'center'}
 											borderRadius={'100%'}
 										>
-											<IconSolana />
+											<IconInovaz
+												width='24'
+												height='24'
+												color='#0A0A0A'
+											/>
 										</Box>
 										<Typography
 											fontSize={'0.875rem'}
@@ -181,8 +186,8 @@ export default function DetailSettingsStep({
 				borderRadius={'8px'}
 			>
 				<Chip
-					label={orderType}
-					color={orderType === 'Buy' ? 'primary' : 'secondary'}
+					label={'For'}
+					color={'info'}
 					sx={{ width: 'max-content' }}
 					size='small'
 				/>
