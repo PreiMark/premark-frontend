@@ -1,68 +1,85 @@
-import axiosInstance from '@/config/axios.config';
+import IconSolana from '@/assets/icons/IconSolana';
+import { ORDER_CURRENCY_LIST, ORDER_PROTOCOL_LIST } from '@/constant';
 import { OrderType } from '@/modules/Dashboard/components/MarketList';
-import { Box, Chip, OutlinedInput, Stack, Typography } from '@mui/material';
-import { useSearchParams } from 'next/navigation';
-import { ChangeEvent, useEffect } from 'react';
-import { useWalletModal } from '@solana/wallet-adapter-react-ui';
-import { useWalletMultiButton } from '@solana/wallet-adapter-base-ui';
+import { validateNumber } from '@/utils/validateNumber';
+import {
+	Box,
+	Chip,
+	MenuItem,
+	OutlinedInput,
+	Select,
+	SelectChangeEvent,
+	Stack,
+	Typography,
+} from '@mui/material';
+import { ChangeEvent, Key, useMemo } from 'react';
 
 interface DetailSettingsStepProps {
-	network: string;
 	orderType: OrderType;
 	totalPrice: number;
-	orderData: any;
-	setOrderData: (value: any) => void;
+	protocol: string;
+	currency: string;
+	totalPoints: number;
+	setCurrency: (value: string) => void;
 	setTotalPoints: (value: number) => void;
+	setProtocol: (value: string) => void;
+	setTotalPrice: (value: number) => void;
+}
+
+interface IOrderProtocol {
+	id: string;
+	name: string;
 }
 
 export default function DetailSettingsStep({
-	network,
 	orderType,
 	totalPrice,
-	orderData,
-	setOrderData,
+	totalPoints,
+	currency,
+	protocol,
+	setCurrency,
+	setTotalPrice,
+	setProtocol,
 	setTotalPoints,
 }: DetailSettingsStepProps) {
-	const searchParams = useSearchParams();
-	const { setVisible: setModalVisible } = useWalletModal();
-	const { publicKey } = useWalletMultiButton({
-		onSelectWallet() {
-			setModalVisible(true);
-		},
-	});
-
 	const onTotalPointsChange = (event: ChangeEvent<HTMLInputElement>) => {
-		const point: number = Number(event.target.value);
-		if (point < 0) {
-			return;
+		const point = event.target.value;
+		if (validateNumber(point)) {
+			if (Number(point) < 0) {
+				return;
+			} else {
+				setTotalPoints(Number(point));
+			}
 		} else {
-			setTotalPoints(point);
+			setTotalPrice(0);
 		}
 	};
 
-	useEffect(() => {
-		const fetchOrderData = async () => {
-			try {
-				const id = searchParams.get('id');
-				const res = await axiosInstance.get(`/offer/${id}`, {
-					data: {
-						marketType: 'Points',
-						offerType: orderType,
-						network: network,
-						userId: publicKey?.toBase58(),
-						status: 'Requested',
-					},
-				});
-				if (res) {
-					setOrderData(res.data.data.data);
-				}
-			} catch (error) {
-				console.log(error);
+	const onTotalCurrencyChange = (event: ChangeEvent<HTMLInputElement>) => {
+		const point = event.target.value;
+		if (validateNumber(point)) {
+			if (Number(point) < 0) {
+				return;
+			} else {
+				setTotalPrice(Number(point));
 			}
-		};
+		} else {
+			setTotalPrice(0);
+		}
+	};
 
-		fetchOrderData();
-	}, [network, orderType, publicKey, searchParams, setOrderData]);
+	const calculatePricePerPoint = useMemo(() => {
+		if (!totalPoints || !totalPrice) return 0;
+		return (totalPrice / totalPoints).toFixed(4);
+	}, [totalPoints, totalPrice]);
+
+	const handleProtocolChange = (event: SelectChangeEvent) => {
+		setProtocol(event.target.value);
+	};
+
+	const handleCurrencyChange = (event: SelectChangeEvent) => {
+		setCurrency(event.target.value);
+	};
 
 	return (
 		<Stack
@@ -70,84 +87,174 @@ export default function DetailSettingsStep({
 			spacing={'32px'}
 		>
 			{/*  */}
-			<Box
+			<Stack
+				direction={'column'}
+				spacing={'16px'}
 				width={'100%'}
 				bgcolor={'#000000'}
 				padding={'16px'}
 				borderRadius={'8px'}
-				position={'relative'}
 			>
+				<Chip
+					label={orderType}
+					color={orderType === 'Buy' ? 'primary' : 'secondary'}
+					sx={{ width: 'max-content' }}
+					size='small'
+				/>
 				<Stack
-					direction={'column'}
-					spacing={'16px'}
+					direction={'row'}
+					spacing={'32px'}
 				>
-					<Chip
-						label={orderType}
-						color={orderType === 'Buy' ? 'primary' : 'secondary'}
-						sx={{ width: 'max-content' }}
-						size='small'
-					/>
 					<OutlinedInput
 						placeholder='Amount'
-						type='number'
 						onChange={onTotalPointsChange}
 						color='primary'
+						fullWidth
 					/>
-					<Typography
-						fontSize={'14px'}
-						lineHeight={'20px'}
+					<Select
+						color='secondary'
+						value={protocol}
+						onChange={handleProtocolChange}
+						sx={{
+							bgcolor: 'rgba(255,255,255,0.1)',
+							borderRadius: '0.5rem',
+							height: 'min-content',
+							fontSize: '14px',
+							lineHeight: '20px',
+						}}
 					>
-						1 Point = ${orderData?.pricePerPoint}
-					</Typography>
+						{ORDER_PROTOCOL_LIST.map(
+							(orderProtocol: IOrderProtocol, key: Key) => (
+								<MenuItem
+									value={orderProtocol.name}
+									key={key}
+									sx={{
+										height: 'min-content',
+										fontSize: '14px',
+										lineHeight: '20px',
+									}}
+								>
+									<Box
+										display={'flex'}
+										gap={'8px'}
+										alignItems={'center'}
+									>
+										<Box
+											width={'24px'}
+											height={'24px'}
+											display={'flex'}
+											alignItems={'center'}
+											justifyContent={'center'}
+											borderRadius={'100%'}
+										>
+											<IconSolana />
+										</Box>
+										<Typography
+											fontSize={'0.875rem'}
+											fontWeight={600}
+											lineHeight={'1.25rem'}
+											textTransform={'capitalize'}
+										>
+											{orderProtocol.name}
+										</Typography>
+									</Box>
+								</MenuItem>
+							),
+						)}
+					</Select>
 				</Stack>
-				<Box
-					position={'absolute'}
-					right={'10px'}
-					bottom={'10px'}
-					borderRadius={'8px'}
-					bgcolor={'rgba(255,255,255,0.1)'}
-					padding={'10px 20px'}
+				<Typography
+					fontSize={'14px'}
+					lineHeight={'20px'}
 				>
-					{orderData?.protocolName}
-				</Box>
-			</Box>
+					1 Point = {`$${calculatePricePerPoint}`}
+				</Typography>
+			</Stack>
 
 			{/*  */}
-			<Box
+			<Stack
+				direction={'column'}
+				spacing={'16px'}
 				width={'100%'}
 				bgcolor={'#000000'}
 				padding={'16px'}
 				borderRadius={'8px'}
-				position={'relative'}
 			>
+				<Chip
+					label={orderType}
+					color={orderType === 'Buy' ? 'primary' : 'secondary'}
+					sx={{ width: 'max-content' }}
+					size='small'
+				/>
 				<Stack
-					direction={'column'}
-					spacing={'16px'}
+					direction={'row'}
+					spacing={'32px'}
 				>
-					<Chip
-						label='For'
-						color='info'
-						sx={{ width: 'max-content' }}
-						size='small'
+					<OutlinedInput
+						placeholder='Amount'
+						onChange={onTotalCurrencyChange}
+						color='primary'
+						fullWidth
 					/>
-					<Typography
-						fontSize={'20px'}
-						fontWeight={700}
+					<Select
+						color='secondary'
+						value={currency}
+						onChange={handleCurrencyChange}
+						sx={{
+							bgcolor: 'rgba(255,255,255,0.1)',
+							borderRadius: '0.5rem',
+							height: 'min-content',
+							fontSize: '14px',
+							lineHeight: '20px',
+						}}
 					>
-						{totalPrice}
-					</Typography>
+						{ORDER_CURRENCY_LIST.map(
+							(orderCurrency: string, key: Key) => (
+								<MenuItem
+									value={orderCurrency}
+									key={key}
+									sx={{
+										height: 'min-content',
+										fontSize: '14px',
+										lineHeight: '20px',
+									}}
+								>
+									<Box
+										display={'flex'}
+										gap={'8px'}
+										alignItems={'center'}
+									>
+										<Box
+											width={'24px'}
+											height={'24px'}
+											display={'flex'}
+											alignItems={'center'}
+											justifyContent={'center'}
+											borderRadius={'100%'}
+										>
+											<IconSolana />
+										</Box>
+										<Typography
+											fontSize={'0.875rem'}
+											fontWeight={600}
+											lineHeight={'1.25rem'}
+											textTransform={'capitalize'}
+										>
+											{orderCurrency}
+										</Typography>
+									</Box>
+								</MenuItem>
+							),
+						)}
+					</Select>
 				</Stack>
-				<Box
-					position={'absolute'}
-					right={'10px'}
-					bottom={'10px'}
-					borderRadius={'8px'}
-					bgcolor={'rgba(255,255,255,0.1)'}
-					padding={'10px 20px'}
+				<Typography
+					fontSize={'14px'}
+					lineHeight={'20px'}
 				>
-					USDC
-				</Box>
-			</Box>
+					{`$${totalPrice}`}
+				</Typography>
+			</Stack>
 		</Stack>
 	);
 }
