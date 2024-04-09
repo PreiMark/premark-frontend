@@ -29,7 +29,11 @@ export const ORDER_STEPS = [
 ];
 
 export const LIST_MENU = [
-  { title: "About", url: "/" },
-  { title: "Feature", url: "/market" },
-  { title: "Roadmap", url: "/" },
+	{ title: 'About', url: '/' },
+	{ title: 'Feature', url: '/dashboard' },
+	{ title: 'Roadmap', url: '/' },
 ];
+
+export const MARKET_TYPE_LIST = ['Treding', 'Flash Deal'];
+
+export const ORDER_NETWORK_LIST = ['solana', 'ethereum'];

@@ -15,12 +15,12 @@ export default function IconTwiter() {
 				width='39'
 				height='39'
 				rx='19.5'
-				stroke='#9E9EA0'
+				stroke='#08E5B2'
 				strokeOpacity='0.18'
 			/>
 			<path
 				d='M25.005 12.6593H27.665L21.855 19.3443L28.715 28.4093H23.325L19.125 22.9143L14.295 28.4093H11.635L17.865 21.2693L11.285 12.6593H16.815L20.63 17.6993L25.005 12.6593ZM24.06 26.7993H25.53L16.01 14.1643H14.4L24.06 26.7993Z'
-				fill='white'
+				fill='#08E5B2'
 			/>
 		</svg>
 	);
