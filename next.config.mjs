@@ -1,11 +1,13 @@
-
 /** @type {import('next').NextConfig} */
 
 const nextConfig = {
-  reactStrictMode: true,
-  compiler: {
-    styledComponents: true,
-  },
-}
+	reactStrictMode: true,
+	compiler: {
+		styledComponents: true,
+	},
+	experimental: {
+		missingSuspenseWithCSRBailout: false,
+	},
+};
 
 export default nextConfig;
