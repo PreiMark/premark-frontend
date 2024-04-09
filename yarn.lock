@@ -941,6 +941,20 @@
   dependencies:
     "@babel/runtime" "^7.23.9"
 
+"@mui/joy@^5.0.0-beta.32":
+  version "5.0.0-beta.32"
+  resolved "https://registry.yarnpkg.com/@mui/joy/-/joy-5.0.0-beta.32.tgz#a7cd6b35b18f812210fe5e089a0aedda8dddd286"
+  integrity sha512-QJW5Mu2GTJUX4sXjxt4nQBugpJAiSkUT49S/bwoKCCWx8bCfsEyplTzZPK+FraweiGhGgZWExWOTAPpxH83RUQ==
+  dependencies:
+    "@babel/runtime" "^7.23.9"
+    "@mui/base" "5.0.0-beta.40"
+    "@mui/core-downloads-tracker" "^5.15.14"
+    "@mui/system" "^5.15.14"
+    "@mui/types" "^7.2.14"
+    "@mui/utils" "^5.15.14"
+    clsx "^2.1.0"
+    prop-types "^15.8.1"
+
 "@mui/material-nextjs@^5.15.11":
   version "5.15.11"
   resolved "https://registry.yarnpkg.com/@mui/material-nextjs/-/material-nextjs-5.15.11.tgz#bf75eece88fb088e74eb5f0eef01f9f64f8ec7f4"
