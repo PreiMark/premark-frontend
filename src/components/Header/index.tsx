@@ -39,10 +39,11 @@ export default function Header(props: IHeaderProps) {
 	return (
 		<Sectionheader>
 			<StackCustom direction={'row'}>
-				<MenuCustom>
-					<Link href='/'>
+			<Link href='/'>
 						<Logo />
 					</Link>
+				<MenuCustom>
+					
 					<Stack
 						direction={'row'}
 						sx={{ alignItems: 'center' }}
@@ -76,6 +77,16 @@ export default function Header(props: IHeaderProps) {
 
 const Sectionheader = styled.div`
 	display: flex;
+	@media (max-width: 768px) {
+		border: none;
+		
+	}
+	
+	border: 1px solid #B47AFF;
+	border-top: none;
+	border-bottom-left-radius: 30px;
+	border-bottom-right-radius: 30px;
+
 	justify-content: space-between;
 	padding: 24px;
 	@media (max-width: 768px) {
@@ -88,6 +99,9 @@ const StackCustom = styled(Stack)`
 	justify-content: space-between;
 	align-items: center;
 	width: 100%;
+	@media (max-width: 768px) {
+		padding: 20px;
+	}
 	@media (max-width: 1024px) {
 		gap: 26px;
 		flex-wrap: wrap;
@@ -95,6 +109,7 @@ const StackCustom = styled(Stack)`
 `;
 
 const MenuCustom = styled(Stack)`
+
 	flex-direction: row;
 	gap: 26px;
 	@media (max-width: 1024px) {
@@ -108,7 +123,7 @@ const MenuCustom = styled(Stack)`
 
 const MenuItem = styled(Button)<any>`
 	color: ${(props) => (props.active ? '#9945ff' : '#fff')};
-	text-transform: capitalize;
+	text-transform: uppercase;
 `;
 
 const ButtonJoin = styled(Button)`
@@ -119,6 +134,9 @@ const ButtonJoin = styled(Button)`
 	border: none;
 	text-transform: capitalize;
 	height: 45px;
+	@media (max-width: 768px) {
+		display: none;
+	}
 	&:hover {
 		opacity: 0.5;
 		background-color: #9945ff !important;
