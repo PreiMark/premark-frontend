@@ -21,7 +21,7 @@ export default function QuizPoint() {
 						lineHeight={'40px'}
 						fontWeight={700}
 					>
-						Inovaz Point
+						Quiz Point
 					</Typography>
 					<Typography
 						fontSize={'16px'}
