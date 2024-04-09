@@ -29,7 +29,7 @@ export default function OfferPage() {
 
 	return (
 		<Stack
-			direction={'row'}
+			direction={{ xs: 'column', lg: 'row' }}
 			spacing={'32px'}
 		>
 			<LeftPanel offerData={offerData} />

@@ -9,7 +9,7 @@ interface RightPanelProps {
 
 export default function RightPanel({ offerData }: RightPanelProps) {
 	return (
-		<Paper>
+		<Paper sx={{ width: '100%', maxWidth: { xs: 'none', lg: '510px' } }}>
 			<Stack
 				direction={'column'}
 				spacing={'16px'}
@@ -45,7 +45,6 @@ export default function RightPanel({ offerData }: RightPanelProps) {
 						direction={'row'}
 						justifyContent={'space-between'}
 						spacing={'16px'}
-						width={'100%'}
 					>
 						<Typography
 							fontSize={'14px'}
