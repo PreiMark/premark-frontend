@@ -61,13 +61,13 @@ export default function Sidebar() {
 							width='24'
 							height='24'
 							color={
-								pathname === '/market' ? '#FC3B69' : '#B2B2B2'
+								pathname === '/order' ? '#FC3B69' : '#B2B2B2'
 							}
 						/>
 					}
 					title='Create Order'
-					isActive={pathname === '/market'}
-					onClick={() => router.push('/market')}
+					isActive={pathname === '/order'}
+					onClick={() => router.push('/order')}
 				/>
 				<NavButton
 					icon={
@@ -109,7 +109,7 @@ export default function Sidebar() {
 					/>
 				}
 				color='info'
-				variant='text'
+				variant='contained'
 				sx={{
 					justifyContent: 'flex-start',
 				}}

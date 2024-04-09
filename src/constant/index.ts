@@ -34,6 +34,6 @@ export const LIST_MENU = [
 	{ title: 'Roadmap', url: '/' },
 ];
 
-export const MARKET_TYPE_LIST = ['Treding', 'Flash Deal'];
+export const MARKET_TYPE_LIST = ['Trending', 'Flash Deal'];
 
 export const ORDER_NETWORK_LIST = ['solana', 'ethereum'];

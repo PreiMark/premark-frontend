@@ -1,8 +1,7 @@
 import QuizPoint from '../components/QuizPoint';
 import MarketPoint from '../components/MarketPoint';
-import { Grid } from '@mui/material';
+import { Grid, Stack } from '@mui/material';
 import MarketList from '../components/MarketList';
-
 export default function DashboardPage() {
 	return (
 		<Grid
