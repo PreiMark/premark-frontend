@@ -35,10 +35,33 @@ export default function NetworkAndTypeStep({
 
 	const renderIcon = (value: string) => {
 		switch (value) {
-			case 'solana':
-				return <IconSolana />;
-			case 'ethereum':
-				return <IconETH />;
+			case 'SOLANA':
+				return (
+					<Box
+						width={'24px'}
+						height={'24px'}
+						display={'flex'}
+						alignItems={'center'}
+						justifyContent={'center'}
+						borderRadius={'100%'}
+					>
+						<IconSolana />
+					</Box>
+				);
+			case 'ETHEREUM':
+				return (
+					<Box
+						width={'24px'}
+						height={'24px'}
+						display={'flex'}
+						alignItems={'center'}
+						justifyContent={'center'}
+						borderRadius={'100%'}
+						bgcolor={'#FFF'}
+					>
+						<IconETH />
+					</Box>
+				);
 			default:
 				break;
 		}
