@@ -1,19 +1,27 @@
 import { OrderType } from '@/modules/Dashboard/components/MarketList';
 import { Box, Chip, Divider, Stack, Typography } from '@mui/material';
+import { useMemo } from 'react';
 
 interface ReviewAndCreateStepProps {
-	orderData: any;
 	totalPoints: number;
 	totalPrice: number;
 	orderType: OrderType;
+	protocol: string;
+	currency: string;
 }
 
 export default function ReviewAndCreateStep({
-	orderData,
 	totalPoints,
 	totalPrice,
 	orderType,
+	protocol,
+	currency,
 }: ReviewAndCreateStepProps) {
+	const calculatePricePerPoint = useMemo(() => {
+		if (!totalPoints || !totalPrice) return 0;
+		return (totalPrice / totalPoints).toFixed(4);
+	}, [totalPoints, totalPrice]);
+
 	return (
 		<Stack
 			direction={'column'}
@@ -24,8 +32,9 @@ export default function ReviewAndCreateStep({
 				gap={'12px'}
 				padding={'16px 8px'}
 				fontWeight={700}
+				textTransform={'capitalize'}
 			>
-				{orderData?.protocolName}
+				{protocol}
 			</Box>
 			<Box
 				borderRadius={'12px'}
@@ -42,15 +51,17 @@ export default function ReviewAndCreateStep({
 				<Typography
 					component={'span'}
 					fontWeight={700}
+					textTransform={'capitalize'}
 				>
-					1111 {orderData?.protocolName}
+					{totalPoints} {protocol}
 				</Typography>{' '}
 				points for{' '}
 				<Typography
 					component={'span'}
 					fontWeight={700}
+					textTransform={'uppercase'}
 				>
-					112 USDC
+					{totalPrice} {currency}
 				</Typography>
 			</Box>
 			<Stack
@@ -124,7 +135,7 @@ export default function ReviewAndCreateStep({
 						alignItems={'center'}
 						gap={'8px'}
 					>
-						{orderData?.pricePerPoint}
+						{calculatePricePerPoint}
 					</Box>
 				</Box>
 				<Box

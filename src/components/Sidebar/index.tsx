@@ -65,7 +65,7 @@ export default function Sidebar() {
 							}
 						/>
 					}
-					title='Create Order'
+					title='Create Offer'
 					isActive={pathname === '/order'}
 					onClick={() => router.push('/order')}
 				/>

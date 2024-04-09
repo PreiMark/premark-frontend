@@ -1,6 +1,7 @@
 'use client';
 
 import CircularProgressWithLabel from '@/components/common/CircularProgressWithLabel';
+import { validateNumber } from '@/utils/validateNumber';
 import {
 	Box,
 	Button,
@@ -20,11 +21,6 @@ interface LeftPanelProps {
 
 export default function LeftPanel({ offerData }: LeftPanelProps) {
 	const [amount, setAmount] = useState<number>();
-
-	const validateNumber = (value: string) => {
-		const numberRegex = /^\d+(\.\d+)?$/;
-		return numberRegex.test(value);
-	};
 
 	const onAmountInputChange = (event: ChangeEvent<HTMLInputElement>) => {
 		const newValue = event.target.value;
