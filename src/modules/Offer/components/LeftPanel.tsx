@@ -189,10 +189,7 @@ export default function LeftPanel({ offerData }: LeftPanelProps) {
             {offerData?.offerType === "Sell" ? "Buy" : "Sell"}ing
           </Typography>{" "}
           <Typography color={"#FFF"} component={"span"}>
-            {isNaN((amount as number) * offerData?.pricePerPoint)
-              ? 0
-              : ((amount as number) * offerData?.pricePerPoint).toFixed(4)}{" "}
-            {offerData?.protocolName} points
+            {amount} {offerData?.protocolName} points
           </Typography>{" "}
           for{" "}
           <Typography color={"#FFF"} component={"span"}>
