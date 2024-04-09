@@ -6,6 +6,7 @@ import vector2 from "@/assets/images/Vector-7.svg";
 import roadmap from "@/assets/images/roadmap.png";
 import { IconCheck, VectorOne, VectorTwo } from "@/assets/icons";
 import { Box } from "@mui/material";
+import theme from "@/styles/theme";
 
 export interface IRoadmapProps {}
 
@@ -25,7 +26,11 @@ export default function Roadmap(props: IRoadmapProps) {
         </ImgCustom>
       </ContentLeft>
       <Box
-      minHeight={"80vh"}
+      sx={{
+        [theme.breakpoints.down('sm')]: {
+         height: '120vh'
+          },
+      }}
       >
          <ContentRight>
         <TimeLineWrapper>
