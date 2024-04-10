@@ -36,16 +36,6 @@ export default function ReviewAndCreateStep({
 			>
 				{protocol}
 			</Box>
-			<Box
-				borderRadius={'12px'}
-				width={'100%'}
-				bgcolor={'#2E262B'}
-				padding={'16px'}
-				color={'#F67431'}
-			>
-				When buying Points, you need to wwait until the points convert
-				into the protocol’s tokens before you can receive tokens.
-			</Box>
 			<Box padding={'0 8px'}>
 				You are buying{' '}
 				<Typography
