@@ -18,6 +18,8 @@ import { useWalletModal } from '@solana/wallet-adapter-react-ui';
 import { useWalletMultiButton } from '@solana/wallet-adapter-base-ui';
 import DoneStep from '../components/DoneStep';
 import { useRouter } from 'next/navigation';
+import IconSolana from '@/assets/icons/IconSolana';
+import IconSol from '@/assets/icons/IconSol';
 
 export interface IMarketPage {}
 
@@ -182,11 +184,19 @@ export default function OrderPage(props: IMarketPage) {
 					variant='contained'
 					fullWidth
 					onClick={handleNextStep}
+					endIcon={
+						crrStep === 2 && (
+							<IconSol
+								width='14'
+								height='14'
+							/>
+						)
+					}
 				>
 					{crrStep < 2
 						? 'Next'
 						: crrStep < 3
-						? `Deposit ${totalPrice} USDC`
+						? `Deposit ${totalPrice}`
 						: 'Create Offer Again'}
 				</Button>
 			</Box>

@@ -45,9 +45,7 @@ export const MARKET_TYPE_LIST = ['Trending', 'Flash Deal'];
 export const ORDER_NETWORK_LIST = ['SOLANA', 'ETHEREUM'];
 
 export const ORDER_PROTOCOL_LIST = [
-	{ name: 'inovax 1', id: '660d61b7647e22533fba9374' },
-	{ name: 'inovax 2', id: '660d61b7647e22533fba9374' },
-	{ name: 'inovax 3', id: '660d61b7647e22533fba9374' },
+	{ name: 'Inovaz', id: '660d61b7647e22533fba9374' },
 ];
 
-export const ORDER_CURRENCY_LIST = ['USDT', 'SOL', 'ETH'];
+export const ORDER_CURRENCY_LIST = ['SOL'];
