@@ -4,7 +4,8 @@ import MenuItem from "@mui/material/MenuItem";
 import { Box, ListItem } from "@mui/material";
 import { useWalletMultiButton } from "@solana/wallet-adapter-base-ui";
 import { useWalletModal } from "@solana/wallet-adapter-react-ui";
-import { SliceAddressWallet } from "@/utils/helper";
+import { sliceAddressWallet } from "@/utils/helper";
+
 
 export default function WalletMenuButton() {
   const { setVisible: setModalVisible } = useWalletModal();
@@ -42,7 +43,7 @@ export default function WalletMenuButton() {
             color:'white'
         }}
       >
-        {publicKey && SliceAddressWallet(publicKey)}
+        {publicKey && sliceAddressWallet(publicKey)}
       </Button>
       {!!open && (
         <ListItem
