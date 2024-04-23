@@ -8,7 +8,11 @@ import {
 } from "@solana/wallet-adapter-react";
 import { WalletModalProvider } from "@solana/wallet-adapter-react-ui";
 
-import { PhantomWalletAdapter } from "@solana/wallet-adapter-wallets";
+import {
+  PhantomWalletAdapter,
+  SolflareWalletAdapter,
+  TrustWalletAdapter,
+} from "@solana/wallet-adapter-wallets";
 import { ReactNode, useMemo } from "react";
 
 export default function SolWalletProvider({
@@ -18,7 +22,14 @@ export default function SolWalletProvider({
 }) {
   const network = WalletAdapterNetwork.Devnet;
 
-  const wallets = useMemo(() => [new PhantomWalletAdapter()], []);
+  const wallets = useMemo(
+    () => [
+      new TrustWalletAdapter(),
+      new PhantomWalletAdapter(),
+      new SolflareWalletAdapter(),
+    ],
+    [network]
+  );
 
   return (
     <ConnectionProvider endpoint={endpoint}>
