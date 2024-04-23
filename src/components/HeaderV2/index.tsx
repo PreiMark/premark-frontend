@@ -16,6 +16,8 @@ import { useWalletMultiButton } from "@solana/wallet-adapter-base-ui";
 import { useWalletModal } from "@solana/wallet-adapter-react-ui";
 import { useMemo } from "react";
 
+import WalletMenuButton from "./componets/WalletMenuButton";
+
 export default function HeaderV2() {
   const { setVisible: setModalVisible } = useWalletModal();
   const { buttonState, publicKey, walletIcon } = useWalletMultiButton({
@@ -28,16 +30,10 @@ export default function HeaderV2() {
 
   const renderButton = useMemo(() => {
     if (publicKey) {
-      const base58 = publicKey.toBase58();
-      const address = base58.slice(0, 2) + ".." + base58.slice(-4);
+   
       return (
-        <Button
-          color="info"
-          variant="contained"
-          onClick={() => setModalVisible(true)}
-        >
-          {address}
-        </Button>
+      
+        <WalletMenuButton/>
       );
     } else {
       switch (buttonState) {

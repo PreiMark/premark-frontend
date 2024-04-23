@@ -10,26 +10,28 @@ import {
 } from "@project-serum/anchor";
 import { PublicKey } from "@solana/web3.js";
 
-export const solNetwork = ()=> {
+export const solNetwork = () => {
   switch (SOL_NETWORK) {
-    case 'mainnet':
-     return WalletAdapterNetwork.Mainnet  
-    case 'testnet':
-      return WalletAdapterNetwork.Testnet  
+    case "mainnet":
+      return WalletAdapterNetwork.Mainnet;
+    case "testnet":
+      return WalletAdapterNetwork.Testnet;
     default:
-        return WalletAdapterNetwork.Devnet  
+      return WalletAdapterNetwork.Devnet;
   }
-}
+};
 
 export let RETAILER = anchor.web3.Keypair.generate();
 export let ORDER = anchor.web3.Keypair.generate();
-export let BID_MINT = new PublicKey('So11111111111111111111111111111111111111112')
+export let BID_MINT = new PublicKey(
+  "So11111111111111111111111111111111111111112"
+);
 export let BID_TOTAL = new anchor.BN(100000000);
 export let BID_POINT = new anchor.BN(1000);
 export let ASK_AMOUNT = new anchor.BN(100000000);
 export let ASK_POINT = new anchor.BN(1000);
 
-export  const endpoint = anchor.web3.clusterApiUrl(solNetwork());
+export const endpoint = anchor.web3.clusterApiUrl(solNetwork());
 
 export const PROGRAM_ACCOUNTS = {
   rent: web3.SYSVAR_RENT_PUBKEY,
@@ -152,4 +154,9 @@ export const initAccountToken = async (
   });
   const tx = new web3.Transaction().add(ix);
   return await provider.sendAndConfirm(tx);
+};
+export const sliceAddressWallet = (publicKey: any) => {
+  const base58 = publicKey.toBase58();
+  const address = base58.slice(0, 2) + ".." + base58.slice(-4);
+  return address;
 };
